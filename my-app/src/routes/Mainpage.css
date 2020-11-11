@@ -1,0 +1,59 @@
+@charset 'utf-8';
+
+html {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 20px;
+}
+
+body {
+  /* 가로 스크롤 안생기게 만듬 */
+  overflow-x: hidden;
+  color: rgb(29, 29, 31);
+  /* 글자 간격 */
+  letter-spacing: -0.05em;
+  background-color: white;
+}
+
+p {
+  /* 행간 */
+  line-height: 1.6;
+}
+
+.local-nav {
+  height: 52px;
+  border-bottom: 1px solid #dddddd;
+  padding: 0 1rem;
+}
+
+.local-nav-links {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  /* 자기 부모만큼 늘려야 한다. 44px 또는 100% */
+  height: 100%;
+  align-items: center;
+}
+
+.local-nav-links .logo-name {
+  margin-right: auto;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.local-nav-links a {
+  font-size: 0.8em;
+}
+
+.local-nav-links a:not(.logo-name) {
+  margin-left: 2em;
+}
+
+a {
+  color: rgb(29, 29, 31);
+  text-decoration: none;
+}
+.logo {
+  height: 40rem;
+  margin: 0 auto;
+  display: block;
+}
