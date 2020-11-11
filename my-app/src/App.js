@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from "react"
 import './App.css';
+import { HashRouter, Route } from "react-router-dom"
+import Signin from './routes/Signin';
+import Signup from './routes/Signup';
+import Mypage from './routes/Mypage';
+import Funcpage from './routes/Funcpage';
+import Mainpage from './routes/Mainpage';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  render(){
+    return(
+      <div>
+        <HashRouter>
+        <Route 
+        path='/' exact={true} component={Mainpage}/>        
+        <Route 
+        path='/signin' exact={true}  component={Signin}/>
+        <Route 
+        path='/signup' exact={true} component={Signup}/>
+        <Route 
+        path='/mypage'exact={true} component={Mypage}/>
+        <Route 
+        path='/start'exact={true} component={Funcpage}/>
+        <Route 
+        path='/'/>
+        <Route 
+        path='/'/>
+       </HashRouter>      
+    </div>)
+  }
 }
 
 export default App;
+
