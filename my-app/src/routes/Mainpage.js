@@ -1,5 +1,5 @@
 import React from "react";
-import './MainPage.css';
+import './Mainpage.css';
 import { Link } from "react-router-dom"
 
 class Mainpage extends React.Component{
