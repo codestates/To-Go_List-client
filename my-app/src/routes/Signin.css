@@ -190,3 +190,12 @@ p {
   color: #937666;
   text-decoration: none;
 }
+
+.signin_error_msg {
+  color: red;
+  text-align: center;
+}
+
+.incorrent_msg {
+  margin-left: 4px;
+}
