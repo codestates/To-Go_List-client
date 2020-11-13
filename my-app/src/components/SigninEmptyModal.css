@@ -10,13 +10,14 @@
   z-index: 9999;
 }
 .modal_frame {
-  margin: 400px 0;
+  position: fixed;
+  margin: 300px 0;
   border: 2px solid #937666;
   box-sizing: border-box;
   box-shadow: 5px 5px 4px 5px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   background: #fff;
-  padding: 50px;
+  padding: 40px;
   text-align: center;
   line-height: 50px;
 }
@@ -30,4 +31,11 @@
   text-shadow: none;
   border: 1px solid transparent;
   width: 30%;
+}
+
+.modal_main {
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  position: absolute;
 }
