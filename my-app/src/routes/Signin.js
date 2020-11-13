@@ -1,9 +1,12 @@
 /* eslint-disable */
+import * as config from '../config'
 import React from "react";
 import './Signin.css'
 import { Link, Route, Redirect } from "react-router-dom"
 import axios from "axios";
 import SigninEmptyModal from "../components/SigninEmptyModal"
+import { GoogleLogin } from "react-google-login"
+
 
 axios.defaults.withCredentials = true;
 
@@ -16,11 +19,30 @@ class Signin extends React.Component{
             password: "",
             incorrectInfo: false,
             show: false,
-            keepLoggedInChecked: false 
+            keepLoggedInChecked: false,
+            id: '',
+            name: '',
+            provider: ''
         }
         this.handleInputValue = this.handleInputValue.bind(this)
         this.keepLoggedInCheckedChange = this.keepLoggedInCheckedChange.bind(this)
     }
+
+    responseGoogle = (res) => {
+        this.setState({
+            id: res.googleId,
+            name: res.profileObj.name,
+            provider: 'google'
+        })
+        this.props.history.push("/start");
+    }
+
+    responseFail = (err) => {
+        console.error(err)
+    }
+
+
+
 
     showModal = e => {
         this.setState({
@@ -38,7 +60,6 @@ class Signin extends React.Component{
     
     handleLogin = () => {
         const { email, password } = this.state
-        console.log(email, password)
         if (!email || !password) {
           this.setState({show: true})
         }
@@ -81,10 +102,19 @@ class Signin extends React.Component{
                     </div>
                     <div className="signin_form">
                         <h1 className="signin_h1">로그인</h1>
-                        <a className="social_btn google_signin_btn" href="https://www.facebook.com/v2.8/dialog/oauth?state=%7B%22connect%22%3Afalse%2C%22csrf%22%3A%228ffc2440ef6e4becbff328d4c776c931%22%7D&redirect_uri=https%3A%2F%2Ftodoist.com%2FUsers%2FfacebookRedirect&response_type=token&response_mode=form_post&apppackagename=com.todoist&client_id=245146872273138&scope=email,public_profile">
-                            <img width="16" height="16" src="https://d3ptyyxy2at9ui.cloudfront.net/google-41de20.svg" />
-                            구글로 계속 진행
-                        </a>
+                        <GoogleLogin
+                            clientId={config.Google_ClientId}
+                            render={renderProps => (
+                                <button className="social_btn google_signin_btn" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                                    <img width="16" height="16" src="https://d3ptyyxy2at9ui.cloudfront.net/google-41de20.svg" />
+                                    구글로 계속 진행
+                                </button>
+                              )}
+                            buttonText="구글로 계속 진행"
+                            onSuccess={this.responseGoogle}
+                            onFailure={this.responseFail}
+                            
+                        />
                         <a className="social_btn google_signin_btn" href="https://www.facebook.com/v2.8/dialog/oauth?state=%7B%22connect%22%3Afalse%2C%22csrf%22%3A%228ffc2440ef6e4becbff328d4c776c931%22%7D&redirect_uri=https%3A%2F%2Ftodoist.com%2FUsers%2FfacebookRedirect&response_type=token&response_mode=form_post&apppackagename=com.todoist&client_id=245146872273138&scope=email,public_profile">
                             <img width="16" height="16" src="https://d3ptyyxy2at9ui.cloudfront.net/facebook-fadd25.svg" />
                             페이스북으로 계속 진행
