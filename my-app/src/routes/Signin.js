@@ -60,6 +60,7 @@ class Signin extends React.Component{
             show : !this.state.show
         })
     }
+
     keepLoggedInCheckedChange(e) {
         this.setState({keepLoggedInChecked: e.target.checked})
     }
@@ -68,6 +69,7 @@ class Signin extends React.Component{
         this.setState({ [key]: e.target.value, incorrectInfo:false });
     };
     
+
     
     handleLogin = () => {
         const { email, password } = this.state
@@ -84,6 +86,7 @@ class Signin extends React.Component{
           }
         })
             .then((data) => {
+
                 if (this.state.keepLoggedInChecked) {
                     localStorage.setItem('isLogin', true)
                 }
