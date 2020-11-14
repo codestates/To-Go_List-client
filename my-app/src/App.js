@@ -6,6 +6,7 @@ import Signup from './routes/Signup';
 import Mypage from './routes/Mypage';
 import Funcpage from './routes/Funcpage';
 import Mainpage from './routes/Mainpage';
+import './default.css'
 
 class App extends React.Component{
   render(){
@@ -30,6 +31,8 @@ class App extends React.Component{
     </div>)
   }
 }
+
+
 
 export default App;
 
