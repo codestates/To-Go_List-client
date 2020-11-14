@@ -1,0 +1,125 @@
+.singup_page{
+    display: flex;
+    justify-content: center;
+  }
+
+.signup_frame {
+  margin: 50px 0;
+    border: 2px solid #937666;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 4px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background: #fff;
+    padding: 25px;
+  }
+
+  .login_logo {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .logo-name {
+    margin-right: auto;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  .signup_page_logo {
+    vertical-align: top;
+    width: auto;
+    height: auto;
+    max-width: 140px;
+    max-height: 50px;
+    
+  }
+
+  .signup_page_text_logo {
+    vertical-align: top;
+    width: auto;
+    height: auto;
+    max-width: 130px;
+    max-height: 100px;
+  }
+
+.signupBtn{
+    cursor: pointer;
+    text-align: center;
+    height: auto;
+    width: 100%;
+    font-size: 13px !important;
+    font-weight: 700;
+    padding: 9px 12px;
+    box-sizing: border-box;
+    background: #E9AD17;
+    margin:auto;
+    margin-top: 30px;
+    color: #fff !important;
+    border : 0px;
+    
+}
+
+.signupBtn:hover{
+  box-shadow:400px 0 0 0 rgba(0,0,0,0.5) inset;
+  
+}
+
+.signup_h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 1.25em;
+  padding: 0;
+  }
+
+
+  hr {
+    margin: 1em 0;
+    padding: 0;
+    border: 0;
+    color: #937666;
+    background-color: #937666;
+    height: 1px;
+  }
+
+  .login_link , .mainpage_link{
+    color: #937666;
+    text-decoration: none;
+  }
+
+  #email , #password , #password_check, #name , #dateBirth , #telNum{
+    box-sizing: border-box;
+    font-size: 13px;
+    font-weight: 400;
+    width: 100%;
+    padding: 0.75em 1em;
+    border: 1px solid #937666;
+    border-radius: 5px;
+  }
+
+  .label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 5px;
+  }
+
+#signup_form{
+  box-sizing: border-box;
+  max-width: 400px;
+  font-size: 13px;
+  color: #000;
+  margin: auto;
+  width: 400px;
+}
+
+.alert-box {
+  display: block;
+    margin: 9px 0 -2px;
+    font-size: 12px;
+    line-height: 14px;
+    color: red;
+  margin-bottom: 5px;
+}
+
+
+
+
