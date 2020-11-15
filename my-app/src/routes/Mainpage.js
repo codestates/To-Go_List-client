@@ -29,12 +29,6 @@ class Mainpage extends React.Component{
     script.type="text/jsx"
     script.async = true;
     document.body.appendChild(script)    
-
-    // window.addEventListener('load', Animation)
-    
-    // setTimeout(() => {
-    //   this.setState({isLoading: false})
-    // }, 5000)
   }
 
   
