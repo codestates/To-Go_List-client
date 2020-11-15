@@ -1,0 +1,241 @@
+@charset 'utf-8';
+
+p {
+  /* 행간 */
+  line-height: 1.6;
+}
+
+/* navigation-bar */
+.local_nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #dddddd;
+  padding: 0 1rem;
+}
+
+.local_nav_links {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  /* 자기 부모만큼 늘려야 한다. 44px 또는 100% */
+  height: 100%;
+  align-items: center;
+}
+
+.local_nav_links .logo_name {
+  margin-right: auto;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.local_nav_links a {
+  font-size: 0.8em;
+}
+
+.local_nav_links a:not(.logo_name) {
+  margin-left: 2em;
+}
+
+a {
+  color: rgb(29, 29, 31);
+  text-decoration: none;
+}
+
+.container .local_nav .local_nav_links .logo_name {
+  width: 150px;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 로고 및 카피*/
+.logo {
+  height: 30rem;
+  margin: 0 auto;
+  display: block;
+}
+
+.scroll_section {
+  border: 1px red solid;
+  padding: 15vh 0;
+}
+
+.main_message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  font-size: 3rem;
+  line-height: 1.5;
+  font-weight: bold;
+  text-align: center;
+}
+
+.main_message_1 {
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  line-height: 1.5;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 30vh;
+}
+
+/* 요소 고정! */
+.sticky_elem {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+}
+#scroll_section_0,
+#scroll_section_1 {
+  padding-top: 0vh;
+}
+
+/* 서치 및 그림 섹션 */
+
+.container #scroll_section_3 .photos {
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 100px);
+  /* fractoion 단위?  width를 지정하고 그비율에 맞게*/
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+}
+
+.container #scroll_section_3 {
+  margin: 0 auto;
+  width: 80%;
+}
+
+.container #scroll_section_3 .photos {
+  border: 1px solid violet;
+  width: 98%;
+  margin: 8px;
+}
+
+.photo {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+}
+
+.photo:nth-child(1) {
+  /* 세로 1번부터 2까지 확장 */
+  grid-column: 1/4;
+}
+
+.photo:nth-child(3) {
+  grid-column: span 2;
+}
+
+.container #scroll_section_3 .search_photos {
+  border: 1px solid green;
+  width: 100%;
+  text-align: center;
+  margin: 5px 5px 5px 0px;
+}
+.container #scroll_section_3 .search_photos .input {
+  margin-right: 5px;
+  border-radius: 5px;
+}
+
+.container #scroll_section_3 .search_photos .btn {
+  border: 1px solid black;
+  margin: 5px 5px 5px 0px;
+  border-radius: 5px;
+}
+
+.container #scroll_section_3 .photo_description {
+  border: 1px solid brown;
+  margin-top: 20px;
+}
+
+.container #scroll_section_3 .photo_description p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* gif 파트 */
+.container #scroll_section_2 {
+  height: 100%;
+  width: 80%;
+  border: 1px solid red;
+  margin: 0 auto;
+}
+
+.container #scroll_section_2 .gif_part {
+  height: 300px;
+  width: 70%;
+  border: 1px solid blue;
+  margin: 0 auto;
+}
+
+.container #scroll_section_2 .gif_description {
+  height: 150px;
+  width: 70%;
+  border: 1px solid green;
+  margin: 15px auto;
+}
+.container #scroll_section_2 .gif_description p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: bold;
+  text-align: center;
+}
+
+#scroll_section_2 {
+  top: 10%;
+  left: 40%;
+  padding-top: 10vh;
+}
+
+#show_scene_0 #scroll_section_0 .sticky_elem,
+#show_scene_1 #scroll_section_1 .sticky_elem,
+#show_scene_2 #scroll_section_2 .sticky_elem,
+#show_scene_3 #scroll_section_3 .sticky_elem {
+  display: block;
+}
+
+/* footer part */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  background-color: orange;
+}
+
+.footer .info {
+  border: 1px solid black;
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, 70px);
+  /* fractoion 단위?  width를 지정하고 그비율에 맞게*/
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+}
+
+.footer .info .logo_size {
+  width: 200px;
+}
+
+.footer .info .developer_info p {
+  font-size: 0.9rem;
+}
