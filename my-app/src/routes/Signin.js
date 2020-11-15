@@ -1,5 +1,5 @@
 /* eslint-disable */
-import * as config from '../config'
+import * as config from '../config/config'
 import React from "react";
 import './Signin.css'
 import { Link, Route, Redirect } from "react-router-dom"

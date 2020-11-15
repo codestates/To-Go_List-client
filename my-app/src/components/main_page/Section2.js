@@ -21,7 +21,7 @@ function Section2() {
         </div>                
       </section>
     </>
-  )
+  );
 } 
 
-export default Section2
+export default Section2;
