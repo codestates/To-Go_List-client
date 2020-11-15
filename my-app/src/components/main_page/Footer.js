@@ -17,10 +17,10 @@ function Footer() {
           </div>
           <div className ="developer_info">
             <p>
-              프로젝트명: To-Go_List<br></br>
-              팀명: <br></br>
-              프론트: <br></br>
-              백앤드: 
+              프로젝트명: To-Go_List<br/>
+              팀명: To-Go<br/>
+              프론트: 배채겸, 박지국, 이창근<br/>
+              백앤드: 이승철 
             </p>
           </div>
         <div className ="technical_reference">
@@ -33,7 +33,7 @@ function Footer() {
         </div>
       </footer>
     </>      
-  )
+  );
 } 
 
 export default Footer;

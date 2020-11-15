@@ -14,10 +14,10 @@ function Section1() {
       	  <p>가고 싶은 곳의 우선 순위를 정해<br></br>가족, 친구 혹은 연인과 함께 좋은 시간을 만들어 드리겠습니다.</p>
       	</div>
       	<div className="sticky_elem main_message_1 d">
-      	  <p>To-Go_List와 함께<br></br>즐거운 여정을 함께 해요!</p>
+      	  <p>To-Go_List와 함께<br></br>즐거운 여정을 시작합시다.</p>
       	</div>
       </section>
     </>
-  )
+  );
 } 
-export default Section1
+export default Section1;

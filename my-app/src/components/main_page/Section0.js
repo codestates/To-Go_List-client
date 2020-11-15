@@ -8,6 +8,6 @@ function Section0() {
        <h1 className ="main_message">To-Go_List와 함께<br></br> 체계적으로 가고 싶은 곳을 정리하세요</h1>
     </section>
     </>
-  )
+  );
 } 
-export default Section0
+export default Section0;
