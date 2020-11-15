@@ -109,10 +109,10 @@ class Signin extends React.Component{
                 <SigninEmptyModal onClose={this.showModal} show={ this.state.show }>이메일과 비밀번호를 입력해 주세요</ SigninEmptyModal>
                 <div className="signin_frame">
                     <div className="login_logo">
-                        <Link to='/' className="signup_link">
-                            <img className="signin_page_logo" src="http://penzim.synology.me/image/To-Go_List-logo-black.png" />
+                        <Link to='/' className="mainpage_link">
+                            <img className="signin_page_logo" src="http://penzim.synology.me/image/firstProject/icon/To-Go_List-logo-black.png" />
                         </Link>
-                        <Link to='/' className="logo-name" >To-Go_List</Link>
+                        {/* <Link to='/' className="logo-name" >To-Go_List</Link> */}
                     </div>
                     <div className="signin_form">
                         <h1 className="signin_h1">로그인</h1>
