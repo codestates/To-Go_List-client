@@ -1,9 +1,25 @@
+/* eslint-disable */
 import React from "react";
+import SearchPhotos from "./SearchPhotos";
+import PhotoListEntry from "./PhotoListEntry";
 
-function Section3() {
-    return (
-        <div className="Section3">To Go List와 함께 가고 싶은 곳</div>
-    )
-} 
+const Section3 = (props) => {
+  {console.log(props.photos)}
+  return (
+    <>
+      <section className="scroll_section" id="scroll_section_3">
+        <div className="photos">
+          {props.photos.map((photo) => {
+              return(
+                <PhotoListEntry photo = {photo} key = {photo.id}/>
+              )
+          })}
+        </div>
+        <SearchPhotos searchSubmit = {(value) => props.handleSubmit(value)}/>
+      </section>
+    </>
+  );
+}
 
-export default Section3
+export default Section3;
+
