@@ -1,70 +1,50 @@
 /* eslint-disable */
 import React from "react";
 import { Link, Route, Redirect } from "react-router-dom"
+import axios from "axios";
 import './Mypage.css'
+import Nav from '../components/Mypage/Nav'
+import UserInfo from '../components/Mypage/UserInfo'
+import MyToGoList from '../components/Mypage/MyToGoList'
+import Footer from '../components/Mypage/Footer'
+
+axios.defaults.withCredentials = true;
+
 class Mypage extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
+            email: '',
+            username: '',
+            phonenum: ''
         }
     }
+
+    componentDidMount() {
+        console.log("didmount중입니다")
+        axios({
+            method: 'get',
+            url: 'http://13.209.21.127:3001/user/info',
+        }
+        )
+            .then((res) => {
+                this.setState({
+                    email: res.email,
+                    username: res.username,
+                    phonenum: res.phonenum
+                })
+            console.log("나오는거야 뭐야",res)
+          })
+    }
+    
+
     render(){
         return (
             <div className="mypage_page">
-                <div className="mypage_nav">
-                    <div className="mypage_logo_box">
-                    <Link to='/' className="mainpage_link">
-                            <img className="Mypage_logo" src="http://penzim.synology.me/image/firstProject/icon/To-Go_List-logo-black.png" />
-                        </Link>
-                    </div>
-                </div>
-                <div className="mypage_userinfo">
-                    <div className="mypage_userinfo_frame">
-                        <h2>회원정보</h2>
-                        <div className="mypage_userinfo_content_box">
-                            <div className="mypage_profile_photo">
-                                <img  id="mypage_profile_photo" src="http://penzim.synology.me/image/firstProject/icon/common_photo.png" />
-                            </div>
-                            <div>
-                            <div className="mypage_profile">
-                                <div className="mypage_profile_name">
-                                    <dl>
-                                    <dt><span id="mypage_profile_name">이름</span></dt>
-                                    <dd><span>이름이 올겁니다</span></dd>
-                                    </dl>
-                                </div>
-                                <div className="mypage_profile_email">
-                                    <dl>
-                                    <dt><span id="mypage_profile_email">이메일</span></dt>
-                                    <dd><span>이메일이 올겁니다</span></dd>
-                                    </dl>
-                                </div>
-                                <div className="mypage_profile_phone">
-                                    <dl>
-                                    <dt><span id="mypage_profile_phone">휴대폰 번호</span></dt>
-                                    <dd><span>휴대폰 번호가 올겁니다</span></dd>
-                                    </dl>
-                                </div>
-                                </div>
-                                </div>
-                            <div className="mypage_profile_edit">
-                                <button id="mypage_edit_btn">편집</button>
-                            </div>
-                        </div>
-                </div>
-                </div>
-                <section className="mypage_mylist">
-                    <div className="mypage_mycontent_box">
-                        <div className="mypage_mycontent_frame">
-                            <div className="mypage_mycontent_map"></div>
-                            <div className="mypage_mycontent_content">내용이 들어갈 겁니다!</div>
-                            <div className="mypage_mycontent_tag">태그태그</div>
-                        </div>    
-                    </div>
-                </section>
-                <footer className="mypage_deleteinfo">
-                <button id="delete_myinfo">계정삭제</button>
-                </footer>
+                <Nav />
+                <UserInfo />
+                <MyToGoList />
+                <Footer />
             </div>
         )
     }

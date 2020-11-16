@@ -28,11 +28,13 @@ class Signin extends React.Component{
             name: '',
             provider: '',
             data: '',
-            googletoken: ''
+            googletoken: '',
+            userinfo: ''
         }
         this.handleInputValue = this.handleInputValue.bind(this)
         this.keepLoggedInCheckedChange = this.keepLoggedInCheckedChange.bind(this)
     }
+
 
 
     responseKakao = (res) => {
@@ -56,7 +58,7 @@ class Signin extends React.Component{
 
     responseGoogle = (res) => {
         const { email, name, id, googletoken } = this.state
-        // console.log(res)
+        console.log(res)
         this.setState({
             id: res.googleId,
             username: res.profileObj.name,
@@ -118,18 +120,20 @@ class Signin extends React.Component{
             password
           }
         })
-            .then((data) => {
+            .then((res) => {
                 if (this.state.keepLoggedInChecked) {
                     localStorage.setItem('isLogin', true)
                 }
-              this.props.history.push("/start");
+              this.props.history.push("/mypage");
           })
             .catch((err) => {
+                console.dir(err)
                 if (this.state.show === false && err.response.status === 401) {
                     this.setState({incorrectInfo : true})
                 }
             })
     };
+    
 
     
 
@@ -138,6 +142,7 @@ class Signin extends React.Component{
         return (
             
             <div className="signin_page">
+
                 {localStorage.isLogin ? <Redirect to="/start" /> : ''}
                 <SigninEmptyModal onClose={this.showModal} show={ this.state.show }>이메일과 비밀번호를 입력해 주세요</ SigninEmptyModal>
                 <div className="signin_frame">
