@@ -12,6 +12,7 @@ import Section3 from '../components/main_page/Section3';
 import Footer from '../components/main_page/Footer';
 import { fakeDate } from '../fakeData';
 
+
 class Mainpage extends React.Component{
   constructor(props){
     super(props);

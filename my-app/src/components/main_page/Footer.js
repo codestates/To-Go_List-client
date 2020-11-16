@@ -1,39 +1,83 @@
+/* eslint-disable */
+
 import React from "react";
-import { FaReact } from 'react-icons/fa';
-import { FaHtml5 } from 'react-icons/fa';
-import { FaCss3Alt } from 'react-icons/fa';
-import { FaNode } from 'react-icons/fa';
-import { SiMysql } from 'react-icons/si';
-import { SiJavascript } from 'react-icons/si';
+import FooterInfoModal from './modal/FooterInfoModal';
+import FooterTechModal from './modal/FooterTechModal';
+import FooterContactModal from './modal/FooterContactModal';
 
 
-function Footer() {
-  return (
-    <>
+class Footer extends React.Component{
+  constructor(props){
+    super(props)
+    this.state ={
+      showInfo: false,
+      showTech: false,
+      showContact: false,
+    }
+  }
+
+  showInfoModal = () =>{
+    this.setState({
+      showInfo: !this.state.showInfo,
+    });
+  }
+
+  closeInfoModal = () =>{
+    this.setState({
+      showInfo: !this.state.showInfo,
+    });
+  }
+  showTechModal = () =>{
+    this.setState({
+      showTech: !this.state.showTech,
+    });
+  }
+
+  closeTechModal = () =>{
+    this.setState({
+      showTech: !this.state.showTech,
+    });
+  }
+  
+  showContactModal = () =>{
+    this.setState({
+      showContact: !this.state.showContact,
+    });
+  }
+
+  closeContactModal = () =>{
+    this.setState({
+      showContact: !this.state.showContact,
+    });
+  }
+  
+
+
+
+  render(){
+    return(
+      <>
+      {this.state.showInfo? <FooterInfoModal show={this.state.showInfo} closeModal={this.closeInfoModal}/>:null}
+      {this.state.showTech? <FooterTechModal show={this.state.showTech} closeModal={this.closeTechModal}/>:null}
+      {this.state.showContact? <FooterContactModal show={this.state.showContact} closeModal={this.closeContactModal}/>:null}
+      {this.showTech ? <div onClick={this.closeTechModal} className="back_drop"></div>:null}
+      {this.showInfo ? <div onClick={this.closeInfoModal} className="back_drop"></div>:null}
+      {this.showContact ? <div onClick={this.closeContactModal} className="back_drop"></div>:null}
       <footer className="footer">
         <div className = "info">
           <div className = "logo_part">
-          <img className = "logo_size" src = "http://penzim.synology.me/image/To-Go_List-logo-black.png"></img>
+            <img className = "logo_size" src = "http://penzim.synology.me/image/To-Go_List-logo-black.png"></img>
+            <div className ="proj_info">
+              <button className="btn_info_modal" onClick={this.showInfoModal}>Info</button>| 
+              <button className="btn_tech_modal"onClick={this.showTechModal}>technical-reference</button> | 
+              <button className="btn_contact_modal"onClick={this.showContactModal}>contact us</button> 
+            </div>
           </div>
-          <div className ="developer_info">
-            <p>
-              프로젝트명: To-Go_List<br/>
-              팀명: To-Go<br/>
-              프론트: 배채겸, 박지국, 이창근<br/>
-              백앤드: 이승철 
-            </p>
-          </div>
-        <div className ="technical_reference">
-          <p>
-          사용한 기술 레퍼런스<br></br> 
-          react, node.js, mysql, html, css, javascript<br></br>
-          <FaReact /><FaHtml5 /><FaCss3Alt/><FaNode /><SiMysql/><SiJavascript />
-          </p>
-        </div>
         </div>
       </footer>
-    </>      
-  );
-} 
+    </>
+    );
+  }
+}
 
 export default Footer;
