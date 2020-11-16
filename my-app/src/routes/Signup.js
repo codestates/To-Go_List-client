@@ -17,11 +17,11 @@ class Signup extends React.Component {
             passwordCheck: "",
             username: "",
             birthDay: "",
-            mobile: "",
+            phonenum: "",
             errMessage: "",
             errPassword: "",
             errPasswordCheck: "",
-            errMobile: ""
+            errMobile: "",
         }
 
         this.handleInputValue = this.handleInputValue.bind(this);
@@ -31,11 +31,13 @@ class Signup extends React.Component {
         this.setState({ [key]: e.target.value });
     };
 
+
+
     handleSignup = () => {
-        const { email, password, passwordCheck, username, birthDay, mobile } = this.state;
+        const { email, password, passwordCheck, username, birthDay, phonenum } = this.state;
         const isPassword = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/
-        const isMobile = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
-        if (!email || !password || !passwordCheck || !username || !birthDay || !mobile) {
+        const isphonenum = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
+        if (!email || !password || !passwordCheck || !username || !birthDay || !phonenum) {
             this.setState({
                 errMessage: "모든 항목은 필수입니다"
             });
@@ -64,7 +66,7 @@ class Signup extends React.Component {
                 errPasswordCheck: ""
             });
         }
-        if (!isMobile.test(mobile)) {
+        if (!isphonenum.test(phonenum)) {
             this.setState({ errMobile: "휴대폰 번호를 다시 확인해주세요" })
             return;
         }
@@ -73,21 +75,19 @@ class Signup extends React.Component {
                 errMobile: ""
             });
         }
-
-
-        {
-            axios
-                .post("http://13.209.21.127:3001/user/signup", {
-                    email: email,
-                    password: password,
-                    passwordCheck: passwordCheck,
-                    username: username,
-                    birthDay: birthDay,
-                    mobile: mobile
-                })
-            this.props.history.push("/signin");
-        }
+        axios
+            .post("http://13.209.21.127:3001/user/signup", {
+                email: email,
+                password: password,
+                passwordCheck: passwordCheck,
+                username: username,
+                birthDay: birthDay,
+                phonenum: phonenum
+            })
+        this.props.history.push("/signin");
     }
+
+
 
     render() {
         return (
@@ -95,7 +95,7 @@ class Signup extends React.Component {
                 <div className="signup_frame">
                     <div className="login_logo">
                         <Link to='/' className="signup_link">
-                            <img className="signup_page_logo" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ef8084f5-733a-43ab-bd87-e1c17835ce76/logo-black.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201114%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201114T160641Z&X-Amz-Expires=86400&X-Amz-Signature=ca905a346ec454def0012675fc9abce879419a84139d5f7775b9241f210fd604&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22logo-black.png%22" />
+                            <img className="signup_page_logo" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ef8084f5-733a-43ab-bd87-e1c17835ce76/logo-black.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201116%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201116T055614Z&X-Amz-Expires=86400&X-Amz-Signature=596c4d322e1f8b4226d3405a2a6c78dbf7b8de41f507ab4832a0bb924dfc0a7d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22logo-black.png%22" />
                             <img className="signup_page_text_logo" src="http://penzim.synology.me/image/firstProject/icon/To-Go_List-logo-black.png" />
                         </Link>
 
@@ -105,6 +105,7 @@ class Signup extends React.Component {
                         <div >
                             <label className="label">이메일</label>
                             <input id="email" type="email" name="email" onChange={this.handleInputValue("email")}></input>
+
                         </div>
                         <div>
                             <label className="label">비밀번호</label>
@@ -133,7 +134,7 @@ class Signup extends React.Component {
                         </div>
                         <div>
                             <label className="label">핸드폰 번호</label>
-                            <input id="telNum" type="tel" name="telNum" onChange={this.handleInputValue("mobile")}></input>
+                            <input id="telNum" type="tel" name="telNum" onChange={this.handleInputValue("phonenum")}></input>
                             <span className="hyphen">- 을 넣어서 입력해주세요</span>
                             {this.state.errMobile ?
                                 <div className="alert-box">
