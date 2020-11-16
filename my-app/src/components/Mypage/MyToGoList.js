@@ -3,10 +3,10 @@ import React from "react";
 
 class MyToGoList extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
 
-        }
+        };
     }
 
     render() {
@@ -20,8 +20,8 @@ class MyToGoList extends React.Component {
                         </div>    
                     </div>
                 </section>
-        )
+        );
     }
 }
 
-export default MyToGoList
+export default MyToGoList;

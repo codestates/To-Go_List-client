@@ -2,10 +2,10 @@ import React from "react";
 
 class UserInfo extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
 
-        }
+        };
     }
 
     render() {
@@ -45,8 +45,8 @@ class UserInfo extends React.Component {
                         </div>
                 </div>
                 </div>
-        )
+        );
     }
 }
 
-export default UserInfo
+export default UserInfo;

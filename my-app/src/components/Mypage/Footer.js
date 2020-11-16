@@ -2,10 +2,10 @@ import React from "react";
 
 class Footer extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
 
-        }
+        };
     }
 
     render() {
@@ -13,8 +13,8 @@ class Footer extends React.Component {
             <footer className="mypage_deleteinfo">
                 <button id="delete_myinfo">계정삭제</button>
                 </footer>
-        )
+        );
     }
 }
 
-export default Footer
+export default Footer;
