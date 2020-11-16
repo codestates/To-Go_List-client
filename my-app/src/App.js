@@ -1,11 +1,12 @@
-import React from "react"
-import './App.css';
-import { HashRouter, Route } from "react-router-dom"
+import React from "react";
+import './default.css';
+import { HashRouter, Route } from "react-router-dom";
 import Signin from './routes/Signin';
 import Signup from './routes/Signup';
 import Mypage from './routes/Mypage';
 import Funcpage from './routes/Funcpage';
 import Mainpage from './routes/Mainpage';
+import './default.css';
 
 class App extends React.Component{
   render(){
@@ -27,9 +28,11 @@ class App extends React.Component{
         <Route 
         path='/'/>
        </HashRouter>      
-    </div>)
+    </div>);
   }
 }
+
+
 
 export default App;
 

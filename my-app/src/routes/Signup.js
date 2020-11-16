@@ -125,7 +125,6 @@ class Signup extends React.Component {
                         <div>
                             <label className="label">이름</label>
                             <input id="name" type="text" name="name" onChange={this.handleInputValue("name")}></input>
-
                         </div>
                         <div>
                             <label className="label">생년월일</label>
