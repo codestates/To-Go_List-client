@@ -15,7 +15,7 @@ class Signup extends React.Component {
             email: "",
             password: "",
             passwordCheck: "",
-            name: "",
+            username: "",
             birthDay: "",
             mobile: "",
             errMessage: "",
@@ -32,10 +32,10 @@ class Signup extends React.Component {
     };
 
     handleSignup = () => {
-        const { email, password, passwordCheck, name, birthDay, mobile } = this.state;
+        const { email, password, passwordCheck, username, birthDay, mobile } = this.state;
         const isPassword = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/
         const isMobile = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/
-        if (!email || !password || !passwordCheck || !name || !birthDay || !mobile) {
+        if (!email || !password || !passwordCheck || !username || !birthDay || !mobile) {
             this.setState({
                 errMessage: "모든 항목은 필수입니다"
             });
@@ -81,7 +81,7 @@ class Signup extends React.Component {
                     email: email,
                     password: password,
                     passwordCheck: passwordCheck,
-                    name: name,
+                    username: username,
                     birthDay: birthDay,
                     mobile: mobile
                 })
@@ -124,7 +124,7 @@ class Signup extends React.Component {
                         </div>
                         <div>
                             <label className="label">이름</label>
-                            <input id="name" type="text" name="name" onChange={this.handleInputValue("name")}></input>
+                            <input id="name" type="text" name="name" onChange={this.handleInputValue("username")}></input>
 
                         </div>
                         <div>
