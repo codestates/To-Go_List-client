@@ -1,4 +1,5 @@
 /* eslint-disable */
+const { kakao } = window
 import * as config from '../config/config'
 import React from "react";
 import './Signin.css'
@@ -7,6 +8,9 @@ import axios from "axios";
 import SigninEmptyModal from "../components/SigninEmptyModal"
 import { GoogleLogin } from "react-google-login"
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+
+import KaKaoLogin from 'react-kakao-login'
+
 
 axios.defaults.withCredentials = true;
 
@@ -22,10 +26,21 @@ class Signin extends React.Component{
             keepLoggedInChecked: false,
             id: '',
             name: '',
-            provider: ''
+            provider: '',
+            data: '',
+            googletoken: ''
         }
         this.handleInputValue = this.handleInputValue.bind(this)
         this.keepLoggedInCheckedChange = this.keepLoggedInCheckedChange.bind(this)
+    }
+
+
+    responseKakao = (res) => {
+        console.log(res)
+        this.setState({
+            id: res.profile.id,
+            provider: 'kakao'
+        })
     }
 
     responseFacebook = (res) => {
@@ -40,12 +55,32 @@ class Signin extends React.Component{
     }
 
     responseGoogle = (res) => {
+        const { email, name, id, googletoken } = this.state
+        // console.log(res)
         this.setState({
             id: res.googleId,
-            name: res.profileObj.name,
-            provider: 'google'
+            username: res.profileObj.name,
+            email: res.profileObj.email,
+            googletoken: res.accessToken
         })
-        this.props.history.push("/start");
+        axios({
+            method: 'post',
+            url: 'http://13.209.21.127:3001/user/signin',
+            data: {
+              googleId : id,
+                email: email,
+                username: name,
+              token: googletoken
+            }
+          })
+            .then((data) => {
+                  console.log(data)
+                  if (this.state.keepLoggedInChecked) {
+                      localStorage.setItem('isLogin', true)
+                  }
+                // this.props.history.push("/start");
+            })
+        // this.props.history.push("/start");
     }
 
     responseFail = (err) => {
@@ -60,7 +95,6 @@ class Signin extends React.Component{
             show : !this.state.show
         })
     }
-
     keepLoggedInCheckedChange(e) {
         this.setState({keepLoggedInChecked: e.target.checked})
     }
@@ -69,7 +103,6 @@ class Signin extends React.Component{
         this.setState({ [key]: e.target.value, incorrectInfo:false });
     };
     
-
     
     handleLogin = () => {
         const { email, password } = this.state
@@ -86,7 +119,6 @@ class Signin extends React.Component{
           }
         })
             .then((data) => {
-
                 if (this.state.keepLoggedInChecked) {
                     localStorage.setItem('isLogin', true)
                 }
@@ -104,15 +136,16 @@ class Signin extends React.Component{
     render() {
 
         return (
+            
             <div className="signin_page">
                 {localStorage.isLogin ? <Redirect to="/start" /> : ''}
                 <SigninEmptyModal onClose={this.showModal} show={ this.state.show }>이메일과 비밀번호를 입력해 주세요</ SigninEmptyModal>
                 <div className="signin_frame">
                     <div className="login_logo">
-                        <Link to='/' className="mainpage_link">
-                            <img className="signin_page_logo" src="http://penzim.synology.me/image/firstProject/icon/To-Go_List-logo-black.png" />
+                        <Link to='/' className="signup_link">
+                            <img className="signin_page_logo" src="http://penzim.synology.me/image/To-Go_List-logo-black.png" />
                         </Link>
-                        {/* <Link to='/' className="logo-name" >To-Go_List</Link> */}
+                        <Link to='/' className="logo-name" >To-Go_List</Link>
                     </div>
                     <div className="signin_form">
                         <h1 className="signin_h1">로그인</h1>
@@ -141,10 +174,19 @@ class Signin extends React.Component{
                                 </div>
                             )}
                         />
-                        <a className="social_btn google_signin_btn" href="https://www.facebook.com/v2.8/dialog/oauth?state=%7B%22connect%22%3Afalse%2C%22csrf%22%3A%228ffc2440ef6e4becbff328d4c776c931%22%7D&redirect_uri=https%3A%2F%2Ftodoist.com%2FUsers%2FfacebookRedirect&response_type=token&response_mode=form_post&apppackagename=com.todoist&client_id=245146872273138&scope=email,public_profile">
-                            <img width="16" height="16" src="http://penzim.synology.me/image/kakaotalk.svg" />
-                            카카오톡으로 계속 진행
-                        </a>
+                        <KaKaoLogin
+                            jsKey='a8121698ac1ed31821225abcb0fb0ac7'
+                            buttonText="Kakao"
+                            render={renderProps => (
+                                <div className="social_btn google_signin_btn" onClick={renderProps.onClick}>
+                                    <img width="16" height="16" src="http://penzim.synology.me/image/kakaotalk.svg" />
+                                    카카오톡으로 계속 진행
+                                </div>
+                            )}
+                            onSuccess={this.responseKakao}
+                            onFailure={this.responseFail}
+                            getProfile="true"
+                        />
                         <div className="separator">
                             <div className="middle_separator">또는</div>
                         </div>
@@ -184,6 +226,10 @@ class Signin extends React.Component{
         )
     }
 }
+
+
+
+
 
 
 export default Signin
