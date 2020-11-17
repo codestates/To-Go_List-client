@@ -21,7 +21,7 @@
   line-height: 50px;
   overflow: hidden;
   height: fit-content;
-  width: auto;
+  width: 500px;
 }
 
 .empty_modal_close_btn {
@@ -34,7 +34,38 @@
   border: 1px solid transparent;
   width: 30%;
 }
-
-.editinfo_email {
+.editinfo_box {
+  margin-bottom: 5px;
+}
+/* .editinfo_email {
   float: left;
+} */
+
+.editinfo_username {
+  margin-bottom: 0px;
+  float: left;
+}
+.input_username {
+  width: 50%;
+}
+.editinfo_phonenum {
+  float: left;
+}
+
+.input_tel {
+  width: 50%;
+}
+.editinfo_password {
+  float: left;
+}
+.input_edit_password {
+  width: 50%;
+}
+
+.editinfo_passwordck {
+  float: left;
+}
+
+.input_password_check {
+  width: 50%;
 }

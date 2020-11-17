@@ -19,6 +19,7 @@ class Mypage extends React.Component{
             email: '',
             username: '',
             phonenum: '',
+            userInfo: '',
             editInfoCheck: false,
             editInfoModalShow: false,
             deleteinfoModalShow: false
@@ -31,15 +32,14 @@ class Mypage extends React.Component{
             method: 'get',
             url: 'http://13.209.99.91:3001/user/info',
         }
-        )
-            .then((res) => {
+        ).then((res) => {
                 this.setState({
-                    email: res.email,
-                    username: res.username,
-                    phonenum: res.phonenum
+                    userInfo:res.data
                 })
             console.log("나오는거야 뭐야",res)
-          })
+            })
+        
+        
     }
 
     //유저정보를 수정하기 위해서 비밀번호확인하는 모달창을 띄우게 할지 state 변경하는 함수
@@ -57,7 +57,9 @@ class Mypage extends React.Component{
     
     render(){
         return (
+            
             <div className="mypage_page">
+                {console.log('마이 페이지 세션스토리지 ',sessionStorage)}
                 <EditInfoPasswordModal onClose={this.editInfoPasswordShow} show={this.state.editInfoCheck} onShow={this.editInfoPasswordShowModal}>
                     정보를 수정하기 위해서 비밀번호를 입력해 주세요
                 </EditInfoPasswordModal>
@@ -65,7 +67,7 @@ class Mypage extends React.Component{
                     된거냐
                 </EditInfoModal>
                 <Nav />
-                <UserInfo passwordcheck={this.editInfoPasswordShow}/>
+                <UserInfo passwordcheck={this.editInfoPasswordShow} userinfo={this.state.userInfo}/>
                 <MyToGoList />
                 <Footer />
             </div>

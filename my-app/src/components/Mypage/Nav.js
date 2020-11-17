@@ -14,25 +14,28 @@ class Nav extends React.Component {
     }
     handleLogout() {
         
-        // axios({
-        //     method: 'post',
-        //     url: 'http://13.209.21.127:3001/user/signout',
-        // }
-        // ).then(res => {
-        //     this.props.history.push("/")
-        // }
+        axios({
+            method: 'post',
+            url: 'http://13.209.99.91:3001/user/signout',
+        }
+        ).then(res => {
+            console.log(res)
+            this.props.history.push("/")
+        }
+          
+        ).catch((err) => {
+            console.log(err)
             
-        // )
-        // this.props.history.push("/")
+        }) 
     }
     
     render() {
         return (
             <div className="mypage_nav">
                 <div className="mypage_logo_box">
-                    <Link to='/' className="mainpage_link">
+                    <button to='/' className="mainpage_link">
                     <img className="Mypage_logo" src="http://penzim.synology.me/image/firstProject/icon/To-Go_List-logo-black.png" />
-                 </Link>
+                 </button>
                 </div>
                 <div className="Mypage_logout_btn_box">
                     <Link to='/' className="Mypage_logout_btn" onClick={this.handleLogout()}>

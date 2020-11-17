@@ -3,9 +3,18 @@ import React from "react";
 import './EditInfoModal.css'
 
 export default class EditInfoModal extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            phonenum: '',
+            username: '',
+            password: '',
+            passwordck: ''
+        }
+    }
 
     handleInputValue = (key) => (e) => {
-        this.setState({ [key]: e.target.value, incorrectInfo:false });
+        this.setState({ [key]: e.target.value});
     };
 
     render() {
@@ -21,15 +30,24 @@ export default class EditInfoModal extends React.Component {
             <div className="modal-main">
                     
                     <div className="general_login_form">
-                            <div className="field">
-                                <div className="editinfo_email">이메일</div>
-                                <input className="input_email" type="email" onChange={this.handleInputValue("email")}></input>
+                            <div className="editinfo_box">
+                                <span className="editinfo_username">이름</span>
+                                <input className="input_username" type="text" onChange={this.handleInputValue("username")}></input>
                             </div>
-                            <div className="field">
-                                <div className="editinfo_label">패스워드</div>
-                                <input className="input_password" type="password" onChange={this.handleInputValue("password")}></input>
+                            <div className="editinfo_box">
+                                <span className="editinfo_phonenum">휴대폰 번호</span>
+                                <input className="input_tel" type="tel" onChange={this.handleInputValue("phonenum")}></input>
                             </div>
+                    </div>
+                    <div className="editinfo_box">
+                                <span className="editinfo_password">비밀번호</span>
+                                <input className="input_edit_password" type="password" onChange={this.handleInputValue("password")}></input>
                             </div>
+                            <div className="editinfo_box">
+                                <span className="editinfo_passwordck">비밀번호 확인</span>
+                                <input className="input_password_check" type="password" onChange={this.handleInputValue("passwordck")}></input>
+                            </div>
+                            
                             
                     <button className="empty_modal_close_btn" onClick={() => { this.props.onClose() }}>
                     닫기

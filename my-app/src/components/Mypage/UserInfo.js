@@ -23,19 +23,19 @@ class UserInfo extends React.Component {
                                 <div className="mypage_profile_name">
                                     <dl>
                                     <dt><span id="mypage_profile_name">이름</span></dt>
-                                    <dd><span>이름이 올겁니다</span></dd>
+                                        <dd><span>{this.props.name}</span></dd>
                                     </dl>
                                 </div>
                                 <div className="mypage_profile_email">
                                     <dl>
                                     <dt><span id="mypage_profile_email">이메일</span></dt>
-                                    <dd><span>이메일이 올겁니다</span></dd>
+                                    <dd><span>{this.props.email}</span></dd>
                                     </dl>
                                 </div>
                                 <div className="mypage_profile_phone">
                                     <dl>
                                     <dt><span id="mypage_profile_phone">휴대폰 번호</span></dt>
-                                    <dd><span>휴대폰 번호가 올겁니다</span></dd>
+                                    <dd><span>{this.props.phonenum}</span></dd>
                                     </dl>
                                 </div>
                                 </div>
