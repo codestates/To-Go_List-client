@@ -22,13 +22,16 @@ class Signup extends React.Component {
             errPassword: "",
             errPasswordCheck: "",
             errMobile: "",
+            existuserinfo: false,
         }
 
         this.handleInputValue = this.handleInputValue.bind(this);
     }
 
     handleInputValue = (key) => (e) => {
-        this.setState({ [key]: e.target.value });
+        this.setState({
+            [key]: e.target.value
+        });
     };
 
 
@@ -75,16 +78,26 @@ class Signup extends React.Component {
                 errMobile: ""
             });
         }
-        axios
-            .post("http://13.209.21.127:3001/user/signup", {
-                email: email,
-                password: password,
-                passwordCheck: passwordCheck,
-                username: username,
-                birthDay: birthDay,
-                phonenum: phonenum
-            })
-        this.props.history.push("/signin");
+
+        {
+            axios
+                .post("http://13.209.21.127:3001/user/signup", {
+                    email: email,
+                    password: password,
+                    passwordCheck: passwordCheck,
+                    username: username,
+                    birthDay: birthDay,
+                    phonenum: phonenum
+                })
+                .then((res) => {
+                    this.props.history.push("/signin")
+                })
+                .catch((err) => {
+                    if (err.status === 409) {
+                        this.setState({ existuserinfo: true })
+                    }
+                })
+        }
     }
 
 
@@ -104,8 +117,11 @@ class Signup extends React.Component {
                         <h1 className="signup_h1">회원가입</h1>
                         <div >
                             <label className="label">이메일</label>
-                            <input id="email" type="email" name="email" onChange={this.handleInputValue("email")}></input>
-
+                            <input id="email" type="email" name="email" onChange={this.handleInputValue("email")} ></input>
+                            {this.state.existuserinfo ?
+                                <div className="alert-box">
+                                    사용중인 email입니다.
+                                </div> : ""}
                         </div>
                         <div>
                             <label className="label">비밀번호</label>
