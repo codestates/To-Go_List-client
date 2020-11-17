@@ -1,0 +1,67 @@
+.modal_page_edit {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+}
+.modal_frame_edit {
+  width: 90%;
+  height: 40%;
+  margin: 400px 0;
+  border: 2px solid #937666;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 4px 5px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  background: #fff;
+  padding: 30px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.empty_modal_close_btn_edit {
+  vertical-align: middle;
+  margin: 5px;
+  background: 0;
+  background-color: #e9ad17;
+  border-radius: 3px;
+  color: black;
+  font-weight: bold;
+  text-shadow: none;
+  border: 1px solid transparent;
+  width: 30%;
+}
+
+.start_newpost_frame_edit {
+  height: 300px;
+  border: 2px solid #937666;
+  border-radius: 10px;
+  padding-left: 20px;
+  padding: 15px;
+  height: auto;
+}
+
+.start_newpost_frame_edit #input_location {
+  display: block;
+  float: left;
+}
+
+.search_location_edit {
+  margin-left: auto;
+  cursor: pointer;
+  padding: 4px;
+  text-align: center;
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: 0;
+  background-color: #e9ad17;
+  color: black;
+  border: 1px solid transparent;
+}

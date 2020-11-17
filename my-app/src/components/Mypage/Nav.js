@@ -16,7 +16,7 @@ class Nav extends React.Component {
         
         // axios({
         //     method: 'post',
-        //     url: 'http://13.209.21.127:3001/user/signout',
+        //     url: 'http://13.209.99.91:3001//user/signout',
         // }
         // ).then(res => {
         //     this.props.history.push("/")

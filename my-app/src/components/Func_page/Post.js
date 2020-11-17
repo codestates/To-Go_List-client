@@ -3,10 +3,10 @@ import React from "react";
 
 class Post extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
 
-        }
+        };
     }
 
     render() {
@@ -20,8 +20,8 @@ class Post extends React.Component {
                     <button className="add_btn" type="submit">추가하기</button>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default Post
+export default Post;
