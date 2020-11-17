@@ -12,6 +12,9 @@ import Section3 from '../components/main_page/Section3';
 import Footer from '../components/main_page/Footer';
 import { fakeDate } from '../fakeData';
 
+axios.defaults.withCredentials = true;
+
+
 class Mainpage extends React.Component{
   constructor(props){
     super(props);
@@ -26,16 +29,16 @@ class Mainpage extends React.Component{
   componentDidMount(){
     const script = document.createElement("script");
     script.src = "../Animation.js";
-    script.type="text/jsx"
+    script.type="text/jsx";
     script.async = true;
-    document.body.appendChild(script)    
+    document.body.appendChild(script);
   }
 
   
   handleSubmit(value){
     const clientId= this.state.clientId
     const searhResult = value
-    let url = `/search/photos?page=1&query=${searhResult}&client_id=${clientId}` 
+    let url = `/api/search/photos?page=1&query=${searhResult}&client_id=${clientId}` 
     console.log(url)
     axios.get(url).then((res) => {
       console.log(res)
