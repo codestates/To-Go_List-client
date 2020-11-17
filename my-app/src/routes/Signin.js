@@ -124,7 +124,7 @@ class Signin extends React.Component{
                 if (this.state.keepLoggedInChecked) {
                     localStorage.setItem('isLogin', true)
                 }
-              this.props.history.push("/mypage");
+              this.props.history.push("/start");
           })
             .catch((err) => {
                 console.dir(err)
@@ -139,7 +139,6 @@ class Signin extends React.Component{
     
 
     render() {
-
         return (
             
             <div className="signin_page">
