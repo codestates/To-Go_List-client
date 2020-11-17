@@ -24,7 +24,7 @@ class Mypage extends React.Component{
         console.log("didmount중입니다")
         axios({
             method: 'get',
-            url: 'http://13.209.21.127:3001/user/info',
+            url: 'http://13.209.99.91:3001/user/info',
         }
         )
             .then((res) => {

@@ -4,14 +4,13 @@ import './Mainpage.css';
 import axios from "axios"
 import { UNSPLASH_API_KEY } from "../config/config";
 import Nav from '../components/main_page/Nav';
-import "../Animation";
+// import "../Animation";
 import Section0 from '../components/main_page/Section0';
 import Section1 from '../components/main_page/Section1';
 import Section2 from '../components/main_page/Section2';
 import Section3 from '../components/main_page/Section3';
 import Footer from '../components/main_page/Footer';
 import { fakeDate } from '../fakeData';
-
 
 class Mainpage extends React.Component{
   constructor(props){
