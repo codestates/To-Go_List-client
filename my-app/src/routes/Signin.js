@@ -131,6 +131,7 @@ class Signin extends React.Component{
                 if (this.state.show === false && err.response.status === 401) {
                     this.setState({incorrectInfo : true})
                 }
+                console.log(err)
             })
     };
     
