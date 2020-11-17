@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 
 class UserInfo extends React.Component {
@@ -40,7 +41,7 @@ class UserInfo extends React.Component {
                                 </div>
                                 </div>
                             <div className="mypage_profile_edit">
-                                <button id="mypage_edit_btn">편집</button>
+                                <button id="mypage_edit_btn" onClick={() => this.props.passwordcheck()}>편집</button>
                             </div>
                         </div>
                 </div>

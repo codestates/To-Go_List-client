@@ -1,6 +1,8 @@
 /* eslint-disable */
 import React from "react";
 import { Link, Route, Redirect } from "react-router-dom"
+import axios from "axios";
+axios.defaults.withCredentials = true;
 
 class Nav extends React.Component {
     constructor(props) {
@@ -8,8 +10,22 @@ class Nav extends React.Component {
         this.state = {
 
         }
+        this.handleLogout = this.handleLogout.bind(this)
     }
-
+    handleLogout() {
+        
+        // axios({
+        //     method: 'post',
+        //     url: 'http://13.209.21.127:3001/user/signout',
+        // }
+        // ).then(res => {
+        //     this.props.history.push("/")
+        // }
+            
+        // )
+        // this.props.history.push("/")
+    }
+    
     render() {
         return (
             <div className="mypage_nav">
@@ -19,9 +35,9 @@ class Nav extends React.Component {
                  </Link>
                 </div>
                 <div className="Mypage_logout_btn_box">
-                <button className="Mypage_logout_btn">
+                    <Link to='/' className="Mypage_logout_btn" onClick={this.handleLogout()}>
                         로그아웃
-                </button>
+                </Link>
                 </div>
                 
             </div>
