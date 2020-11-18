@@ -11,9 +11,6 @@ export default class FooterContactModal extends React.Component {
     }
     
     render() {
-    //     if (!this.props.show) {
-    //       return null
-    //   }
     const {show, closeModal} = this.props
     console.log(show)
         return (

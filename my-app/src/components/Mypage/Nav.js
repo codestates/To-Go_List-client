@@ -14,16 +14,21 @@ class Nav extends React.Component {
     }
     handleLogout() {
         
-        // axios({
-        //     method: 'post',
-        //     url: 'http://13.209.21.127:3001/user/signout',
-        // }
-        // ).then(res => {
-        //     this.props.history.push("/")
-        // }
+
+        axios({
+            method: 'post',
+            url: 'http://13.209.99.91:3001/user/signout',
+        }
+        ).then(res => {
+            console.log(res)
+            this.props.history.push("/")
+        }
+          
+        ).catch((err) => {
+            console.log(err)
+
             
-        // )
-        // this.props.history.push("/")
+        }) 
     }
     
     render() {
@@ -35,7 +40,7 @@ class Nav extends React.Component {
                  </Link>
                 </div>
                 <div className="Mypage_logout_btn_box">
-                    <Link to='/' className="Mypage_logout_btn" onClick={this.handleLogout()}>
+                    <Link to='/' className="Mypage_logout_btn" onClick={() => { this.handleLogout() }}>
                         로그아웃
                 </Link>
                 </div>
