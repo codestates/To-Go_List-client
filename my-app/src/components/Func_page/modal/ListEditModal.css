@@ -33,7 +33,7 @@
   font-weight: bold;
   text-shadow: none;
   border: 1px solid transparent;
-  width: 30%;
+  width: 20%;
 }
 
 .start_newpost_frame_edit {
@@ -64,4 +64,5 @@
   background-color: #e9ad17;
   color: black;
   border: 1px solid transparent;
+  width: 5%;
 }
