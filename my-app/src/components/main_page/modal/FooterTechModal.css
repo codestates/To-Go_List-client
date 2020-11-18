@@ -30,6 +30,9 @@ body {
   margin: 4rem auto;
   transition: all 1.3s ease;
   z-index: 9999;
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px;
 }
 
 .modal_header_Tech {

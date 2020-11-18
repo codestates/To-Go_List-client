@@ -25,9 +25,9 @@ export default class FooterInfoModal extends React.Component {
                     백앤드: 이승철
                   </p>
                 </div>
-            </div>
-            <div className="modal_footer_info">
-              <button onClick={closeModal} className="close_modal_btn_info">close</button>
+                <div className="modal_footer_info">
+                  <button onClick={closeModal} className="close_modal_btn_info">close</button>
+                </div>
             </div>
           </div>
         )

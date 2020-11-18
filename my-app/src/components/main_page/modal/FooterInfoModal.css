@@ -25,10 +25,12 @@ body {
   right: 0;
   left: 0;
   width: 60%;
-  background: white;
   max-width: 1000px;
   margin: 4rem auto;
   transition: all 1.3s ease;
+  border: 1px solid;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px;
 }
 
 .modal_header_info {
@@ -47,6 +49,7 @@ body {
 
 .modal_content_info {
   padding: 1.5rem 1rem;
+  background-color: #ffffff;
 }
 
 .modal_body_info {
