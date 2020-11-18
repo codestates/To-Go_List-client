@@ -14,7 +14,7 @@ export default class ListDeleteModal extends React.Component {
     console.log("Delete Modal")
     const {show, closeModal} = this.props
         return (
-            <div className="modal_page_del">
+          <div className="modal_page_del">
             <div className="modal_frame_del">
                 <div className="modal_message">
                   정말로 삭제하시겠습니까?
