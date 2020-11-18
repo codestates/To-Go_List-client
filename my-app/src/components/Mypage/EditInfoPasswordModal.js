@@ -20,8 +20,8 @@ export default class EditInfoPasswordModal extends React.Component {
             data: {
             password: password
             }
-        }).then(Response => {
-            console.log(Response)
+        }).then(response => {
+            console.log(response)
             this.props.onClose(),
             this.props.onShow() 
         }).catch(err => {
@@ -42,8 +42,7 @@ export default class EditInfoPasswordModal extends React.Component {
             <div className="modal-main">
                     <div>{this.props.children}</div>
                     <input type="password" onChange={this.handleInputValue("password")}/>
-            <button className="empty_modal_close_btn" onClick={() => { this.CheckUserPassword(), this.props.onClose(),
-            this.props.onShow()}}>
+            <button className="empty_modal_close_btn" onClick={() => { this.CheckUserPassword()}}>
                 전송
             </button>
                 </div>

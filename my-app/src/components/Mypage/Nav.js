@@ -33,12 +33,12 @@ class Nav extends React.Component {
         return (
             <div className="mypage_nav">
                 <div className="mypage_logo_box">
-                    <button to='/' className="mainpage_link">
+                    <Link to='/' className="mainpage_link">
                     <img className="Mypage_logo" src="http://penzim.synology.me/image/firstProject/icon/To-Go_List-logo-black.png" />
-                 </button>
+                 </Link>
                 </div>
                 <div className="Mypage_logout_btn_box">
-                    <Link to='/' className="Mypage_logout_btn" onClick={this.handleLogout()}>
+                    <Link to='/' className="Mypage_logout_btn" onClick={() => { this.handleLogout() }}>
                         로그아웃
                 </Link>
                 </div>

@@ -122,6 +122,7 @@ class Signin extends React.Component{
           }
         })
             .then((res) => {
+                console.log(document.cookie)
                 console.log('아이디 나오나 ?????', res)
                 sessionStorage.setItem("userid", res.data.id)
                 if (this.state.keepLoggedInChecked) {

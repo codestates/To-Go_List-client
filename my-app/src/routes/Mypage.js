@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react";
 import { Link, Route, Redirect } from "react-router-dom"
-import axios from "axios";
+import axios from "axios"
 import './Mypage.css'
 import Nav from '../components/Mypage/Nav'
 import UserInfo from '../components/Mypage/UserInfo'
@@ -28,10 +28,19 @@ class Mypage extends React.Component{
 
     componentDidMount() {
         console.log("didmount중입니다")
+        
+        // axios.get('http://13.209.99.91:3001/user/info', {
+        //     headers: {
+        //         Accept : "application/json, text/plain, */*"
+        //     }
+        // }).then(response => {
+        //     console.log(response)
+        // })
+
         axios({
             method: 'get',
             url: 'http://13.209.99.91:3001/user/info',
-        }
+        },{withCredentials :true}
         ).then((res) => {
                 this.setState({
                     userInfo:res.data
@@ -59,7 +68,7 @@ class Mypage extends React.Component{
         return (
             
             <div className="mypage_page">
-                {console.log('마이 페이지 세션스토리지 ',sessionStorage)}
+                {console.log('디드마운트하면 없어져? ',this.state.userInfo)}
                 <EditInfoPasswordModal onClose={this.editInfoPasswordShow} show={this.state.editInfoCheck} onShow={this.editInfoPasswordShowModal}>
                     정보를 수정하기 위해서 비밀번호를 입력해 주세요
                 </EditInfoPasswordModal>

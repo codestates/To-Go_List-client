@@ -1,6 +1,10 @@
 /* eslint-disable */
 import React from "react";
 import './EditInfoModal.css'
+import { Link, Route, Redirect } from "react-router-dom"
+import axios from "axios";
+
+axios.defaults.withCredentials = true;
 
 export default class EditInfoModal extends React.Component {
     constructor(props) {
@@ -17,8 +21,33 @@ export default class EditInfoModal extends React.Component {
         this.setState({ [key]: e.target.value});
     };
 
+    handleSubmit = () => {
+        const { phonenum, username, password } = this.state
+        console.log('patch합니다')
+        axios({
+          method: 'patch',
+          url: 'http://13.209.99.91:3001/user/editinfo',
+            data: {
+                phonenum,
+                username,
+            password
+          }
+        })
+            .then((res) => {
+                console.log("뭐가 찍히는게야",res.response)
+                    // if (res.status === 200) {
+                    //     <Redirect to="/mypage"></Redirect> }
+    
+                
+                
+          })
+            .catch((err) => {
+                console.dir(err)
+            })
+    };
+
     render() {
-        {console.log('프롭스 뱉어라',this.props)}
+        // {console.log('프롭스 뱉어라',this.props)}
         if (!this.props.show) {
           return null
         }
@@ -49,8 +78,11 @@ export default class EditInfoModal extends React.Component {
                             </div>
                             
                             
-                    <button className="empty_modal_close_btn" onClick={() => { this.props.onClose() }}>
-                    닫기
+                    <button className="editinfo_modal_close_btn" onClick={() => { this.props.onClose() }}>
+                        닫기
+                </button>
+                <button className="editinfo_modal_submit_btn" onClick={() => { this.handleSubmit(), this.props.onClose() }}>
+                    전송
                 </button>
                 </div>
                 </div>
