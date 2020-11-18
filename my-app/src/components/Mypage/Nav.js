@@ -21,6 +21,7 @@ class Nav extends React.Component {
         }
         ).then(res => {
             console.log(res)
+            localStorage.removeItem('isLogin')
             this.props.history.push("/")
         }
           
@@ -42,6 +43,11 @@ class Nav extends React.Component {
                 <div className="Mypage_logout_btn_box">
                     <Link to='/' className="Mypage_logout_btn" onClick={() => { this.handleLogout() }}>
                         로그아웃
+                </Link>
+                </div>
+                <div className="Mypage_logout_btn_box">
+                    <Link to='/start' className="Mypage_logout_btn" >
+                        기능페이지
                 </Link>
                 </div>
                 
