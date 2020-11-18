@@ -21,10 +21,10 @@
   line-height: 50px;
   overflow: hidden;
   height: fit-content;
-  width: auto;
+  width: 500px;
 }
 
-.empty_modal_close_btn {
+.editinfo_modal_close_btn {
   vertical-align: middle;
   background: 0;
   background-color: #e9ad17;
@@ -33,8 +33,51 @@
   text-shadow: none;
   border: 1px solid transparent;
   width: 30%;
+  margin-right: 10px;
+}
+.editinfo_modal_submit_btn {
+  vertical-align: middle;
+  background: 0;
+  background-color: #e9ad17;
+  border-radius: 3px;
+  color: #fff !important;
+  text-shadow: none;
+  border: 1px solid transparent;
+  width: 30%;
+  margin-left: 10px;
+}
+.editinfo_box {
+  margin-bottom: 5px;
+}
+/* .editinfo_email {
+  float: left;
+} */
+
+.editinfo_username {
+  margin-bottom: 0px;
+  float: left;
+}
+.input_username {
+  width: 50%;
+}
+.editinfo_phonenum {
+  float: left;
 }
 
-.editinfo_email {
+.input_tel {
+  width: 50%;
+}
+.editinfo_password {
   float: left;
+}
+.input_edit_password {
+  width: 50%;
+}
+
+.editinfo_passwordck {
+  float: left;
+}
+
+.input_password_check {
+  width: 50%;
 }
