@@ -67,7 +67,9 @@ class Signin extends React.Component{
         })
         axios({
             method: 'post',
+
             url: 'http://13.209.99.91:3001/user/google',
+
             data: {
             //   googleId : id,
             //     email: email,
@@ -129,9 +131,9 @@ class Signin extends React.Component{
                     sessionStorage.setItem("userid", res.data.id)
                     localStorage.setItem('isLogin', true)
                 }
-                console.log('여기가 로컬스토리지', localStorage)
-                console.log('사인인 페이지 세션스토리지 ',sessionStorage)
-              this.props.history.push("/mypage");
+
+              this.props.history.push("/start");
+
           })
             .catch((err) => {
                 console.dir(err)
@@ -146,7 +148,6 @@ class Signin extends React.Component{
     
 
     render() {
-
         return (
             
             <div className="signin_page">

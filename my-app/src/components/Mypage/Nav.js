@@ -14,6 +14,7 @@ class Nav extends React.Component {
     }
     handleLogout() {
         
+
         axios({
             method: 'post',
             url: 'http://13.209.99.91:3001/user/signout',
@@ -25,6 +26,7 @@ class Nav extends React.Component {
           
         ).catch((err) => {
             console.log(err)
+
             
         }) 
     }
