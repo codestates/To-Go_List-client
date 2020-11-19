@@ -1,27 +1,34 @@
+/* eslint-disable */
 import React from "react";
 
-
-class MyToGoList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-
-        };
-    }
-
-    render() {
-        return (
-            <section className="mypage_mylist">
-                    <div className="mypage_mycontent_box">
-                        <div className="mypage_mycontent_frame">
-                            <div className="mypage_mycontent_map"></div>
-                            <div className="mypage_mycontent_content">내용이 들어갈 겁니다!</div>
-                            <div className="mypage_mycontent_tag">태그태그</div>
-                        </div>    
-                    </div>
-                </section>
-        );
-    }
+const MyToGoList = (props) => {
+    return (
+        <div className="mypage_mylist">
+            <div className="mypage_mycontent_boxs">
+            {props.post.length === 0 ? "가고 싶은 곳을 등록해주세요!" : 
+                props.post.map(function (el) {
+                    return (
+                        
+                            <div className="mypage_mycontent_frame">
+                                <div className="mypage_mycontent_map">{el.mapimgpath && el.mapimgpath}</div>
+                                <div className="mypage_mycontent_content">{el.content}</div>
+                                <div className="mypage_mycontent_tag">{el.hashtags.length === 0 ? '' :
+                                    el.hashtags.map(function (ele) {
+                                    return (ele.tag)
+                                })
+                                }</div>
+                         
+                        </div>
+                    )
+                })
+            }
+            {console.log(props.post)}
+                </div> 
+                </div>
+    )
 }
 
+
 export default MyToGoList;
+
+

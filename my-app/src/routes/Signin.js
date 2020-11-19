@@ -83,6 +83,7 @@ class Signin extends React.Component{
                   if (this.state.keepLoggedInChecked) {
                       localStorage.setItem('isLogin', true)
                   }
+                  localStorage.setItem('isLogin', true)
                 this.props.history.push("/start");
             })
         // this.props.history.push("/start");
@@ -131,7 +132,7 @@ class Signin extends React.Component{
                     sessionStorage.setItem("userid", res.data.id)
                     localStorage.setItem('isLogin', true)
                 }
-
+                localStorage.setItem('isLogin', true)
               this.props.history.push("/start");
 
           })
@@ -151,7 +152,6 @@ class Signin extends React.Component{
         return (
             
             <div className="signin_page">
-                {/* {console.log(this.props)} */}
                 {localStorage.isLogin ? <Redirect to="/start" /> : ''}
                 <SigninEmptyModal onClose={this.showModal} show={ this.state.show }>이메일과 비밀번호를 입력해 주세요</ SigninEmptyModal>
                 <div className="signin_frame">
