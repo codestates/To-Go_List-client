@@ -7,17 +7,21 @@ function ShowNaverMap(props) {
   const {lat, lng} = props
   console.log("lat: ", lat, "lng: ", lng)
   return (
+    <>
     <NaverMap
       mapDivId={'maps-getting-started-uncontrolled'}
       style={{
         width: '100%', 
         height: '42vh'
       }}
-      defaultCenter={{lng: 37.5666103, lat: 126.9783882   }}
+      defaultCenter={{lng: Number(lat), lat: Number(lng)}}
       defaultZoom={13} 
     />
+    </>
   );
 }
+
+
 
 // class ShowNaverMap extends React.Component{
 //   constructor(props){

@@ -18,24 +18,28 @@ class Section2 extends React.Component{
       value: e.target.value,
     });
   }
+  
+
+
   render(){
     console.log(this.props)
     return(
       <>
         <section className="scroll_section" id="scroll_section_2">
           <div className = "gif_part" id="map" style={{width:"100%"}, {height:"400px"}}>
-            <ShowNaverMap lat = {this.props.lat} lng = {this.props.lng}/>
+    
             <RenderAfterNavermapsLoaded
               ncpClientId={NAVER_MAP_CLIENTID}
               error={<p>Maps Load Error</p>}
               loading={<p>Maps Loading...</p>}>
-            <ShowNaverMap />
+            <ShowNaverMap lat = {this.props.lat} lng = {this.props.lng}/>
             </RenderAfterNavermapsLoaded>            
           </div>
           <div className = "gif_description">
             <div className ="search_photos">
               <input className = "input" type = "text" placeholder = "search for location" onChange={this.handleChange}/>
-              <button className = "btn" onClick={() => this.props.handleSubmit(this.state.value)}>Search</button>
+              <button className = "btn" onClick={() => this.props.getLatLng(this.state.value)}>Search</button>
+              {/* <button className = "btn" onClick={() => this.props.handleSubmit(this.state.value)}>change</button> */}
             </div>
             <p> 기능 설명<br></br> 
               1. 저장했던 장소는 태그했던 내용을 바탕으로 검색하면 됩니다.<br></br>

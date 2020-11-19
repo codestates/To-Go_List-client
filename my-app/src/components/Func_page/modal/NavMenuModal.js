@@ -15,18 +15,21 @@ export default class NavMenuModal extends React.Component {
     }
 
     handleLogout() {
-        console.log('pass', this.props)
-        // axios({
-        //     method: 'post',
-        //     url: 'http://13.209.21.127:3001/user/signout',
-        // }
-        // ).then(res => {
-        //     console.log(this.props.history)
-        //     // this.props.history.push("/")
-        // }
-            
-        // )
-        // // this.props.history.push("/")
+      axios({
+        method: 'post',
+        url: 'http://13.209.99.91:3001/user/signout',
+    }
+    ).then(res => {
+        console.log(res)
+        localStorage.removeItem('isLogin')
+        this.props.history.push("/")
+    }
+      
+    ).catch((err) => {
+        console.log(err)
+
+        
+    }) 
     }
     
 
@@ -50,7 +53,7 @@ export default class NavMenuModal extends React.Component {
                 </div>
                 <div className="modal_body">
                   <div className="menu_name">
-                    <Link onClick={this.handleLogout()} to='/'>로그아웃</Link>
+                    <Link onClick={() => {this.handleLogout()}} to='/'>로그아웃</Link>
                   </div>
                 </div>
                 <div className="modal_body">
