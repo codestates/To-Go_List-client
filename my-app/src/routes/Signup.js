@@ -77,7 +77,7 @@ class Signup extends React.Component {
 
         {
             axios
-                .post("http://13.209.21.127:3001/user/signup", {
+                .post("http://13.209.99.91:3001/user/signup", {
                     email: email,
                     password: password,
                     passwordCheck: passwordCheck,

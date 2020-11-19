@@ -7,12 +7,14 @@ import SearchModal from "../../components/SearchModal"
 
 class Post extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
+
             result: [],
             value: "",
             isModalOpen: false
         }
+
     }
 
     handleChange = (e) => {
@@ -61,9 +63,11 @@ class Post extends React.Component {
                 </div>
                 <SearchModal show={this.state.isModalOpen} closeModal={this.closeModal} />
             </div>
-        )
+        );
     }
 }
 
+
 export default Post
+
 

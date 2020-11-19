@@ -63,24 +63,28 @@ class Signin extends React.Component{
             id: res.googleId,
             username: res.profileObj.name,
             email: res.profileObj.email,
-            googletoken: res.accessToken
+            googletoken: res.tokenId
         })
         axios({
             method: 'post',
-            url: 'http://13.209.21.127:3001/user/signin',
+
+            url: 'http://13.209.99.91:3001/user/google',
+
             data: {
-              googleId : id,
-                email: email,
-                username: name,
-              token: googletoken
+            //   googleId : id,
+            //     email: email,
+            //     username: name,
+              tokenId: googletoken
             }
           })
             .then((data) => {
-                  console.log(data)
+                console.log(data)
+                console.log(data.tokenId)
                   if (this.state.keepLoggedInChecked) {
                       localStorage.setItem('isLogin', true)
                   }
-                // this.props.history.push("/start");
+                  localStorage.setItem('isLogin', true)
+                this.props.history.push("/start");
             })
         // this.props.history.push("/start");
     }
@@ -114,23 +118,30 @@ class Signin extends React.Component{
 
         axios({
           method: 'post',
-          url: 'http://13.209.21.127:3001/user/signin',
+          url: 'http://13.209.99.91:3001/user/signin',
           data: {
             email,
             password
           }
         })
             .then((res) => {
+                console.log(document.cookie)
+                console.log('아이디 나오나 ?????', res)
+                sessionStorage.setItem("userid", res.data.id)
                 if (this.state.keepLoggedInChecked) {
+                    sessionStorage.setItem("userid", res.data.id)
                     localStorage.setItem('isLogin', true)
                 }
-              this.props.history.push("/mypage");
+                localStorage.setItem('isLogin', true)
+              this.props.history.push("/start");
+
           })
             .catch((err) => {
                 console.dir(err)
                 if (this.state.show === false && err.response.status === 401) {
                     this.setState({incorrectInfo : true})
                 }
+                console.log(err)
             })
     };
     
@@ -138,11 +149,9 @@ class Signin extends React.Component{
     
 
     render() {
-
         return (
             
             <div className="signin_page">
-
                 {localStorage.isLogin ? <Redirect to="/start" /> : ''}
                 <SigninEmptyModal onClose={this.showModal} show={ this.state.show }>이메일과 비밀번호를 입력해 주세요</ SigninEmptyModal>
                 <div className="signin_frame">
