@@ -33,7 +33,6 @@ export default class EditInfoPasswordModal extends React.Component {
     };
     
     render() {
-        {console.log('프롭스 뱉어라',this.props)}
         if (!this.props.show) {
           return null
       }

@@ -29,11 +29,14 @@
   height: 60%;
   width: 10%;
   border: 2px solid #937666;
-  border-radius: 2px;
+  border-radius: 5px;
   transform: translateY(30%);
   text-align: center;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 .Mypage_logout_btn {
+  color: #937666;
   text-align: center;
 }
 /* 회원정보칸 */
@@ -153,15 +156,16 @@ dd {
 .mypage_mylist {
   position: static;
   /* border: 2px solid black; */
+  height: auto;
   padding-left: 55px;
   padding-right: 55px;
   padding-top: 20px;
   padding-bottom: 20px;
-  height: auto;
+
   margin: 0 auto;
 }
-.mypage_mycontent_box {
-  height: 600px;
+.mypage_mycontent_boxs {
+  height: auto;
   border: 2px solid #937666;
   border-radius: 10px;
   padding: 20px;
@@ -171,6 +175,7 @@ dd {
   border: 2px solid #937666;
   border-radius: 10px;
   padding: 10px;
+  margin-bottom: 10px;
 }
 .mypage_mycontent_map {
   width: 100%;
@@ -182,6 +187,7 @@ dd {
 .mypage_mycontent_content {
   width: 100%;
   height: auto;
+  font-size: 12px;
   border: 2px solid #937666;
   border-radius: 10px;
   padding: 10px;
@@ -189,6 +195,7 @@ dd {
 }
 .mypage_mycontent_tag {
   width: 100%;
+  font-size: 12px;
   height: auto;
   border: 2px solid #937666;
   border-radius: 10px;
@@ -197,7 +204,7 @@ dd {
 /* 계정삭제 */
 .mypage_deleteinfo {
   position: fixed static;
-  bottom: 0;
+  /* bottom: 0; */
   height: 50px;
 }
 #delete_myinfo {
@@ -214,6 +221,7 @@ dd {
   border-radius: 5px;
   background: 0;
   background-color: #e9ad17;
+  text-align: center;
   color: #fff !important;
   /* text-shadow: none; */
   border: 1px solid transparent;

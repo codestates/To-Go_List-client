@@ -34,12 +34,8 @@ export default class EditInfoModal extends React.Component {
           }
         })
             .then((res) => {
-                console.log("뭐가 찍히는게야",res.response)
-                    // if (res.status === 200) {
-                    //     <Redirect to="/mypage"></Redirect> }
-    
-                
-                
+                console.log("뭐가 찍히는게야", res.response)
+                this.props.editinfo()  
           })
             .catch((err) => {
                 console.dir(err)
@@ -47,7 +43,7 @@ export default class EditInfoModal extends React.Component {
     };
 
     render() {
-        // {console.log('프롭스 뱉어라',this.props)}
+        {console.log('프롭스 뱉어라',this.props)}
         if (!this.props.show) {
           return null
         }
