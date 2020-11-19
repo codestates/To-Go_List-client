@@ -8,6 +8,7 @@ import axios from "axios"
 import ListDeleteModal from "./modal/ListDeleteModal";
 import ListEditModal from "./modal/ListEditModal";
 
+axios.defaults.withCredentials = true;
 
 class ToGoList extends React.Component {
     constructor(props) {
@@ -17,22 +18,26 @@ class ToGoList extends React.Component {
             location: "",
             mapimgpath: "",
             tag: "",
-            info: "",
             showEdit: false,
             showDelete: false,
+            post: ""
         }
+        // this.showEditModal = this.showEditModal.bind(this)
     }
 
     componentDidMount() {
+        console.log("기능페이지 didmount중입니다")
+        
+        
         axios({
-            method: "get",
-            url: "http://localhost:3001/post"
-        })
-            .then((res) => {
-                console.log(res)
+            method: 'get',
+            url: 'https://togolist-server.ml/post',
+        },{withCredentials :true}
+        ).then((res) => {
                 this.setState({
-                    content: res.data.content
+                    post:res.data
                 })
+            console.log("기능페이지 포스트 받아오니?",res)
             })
     }
 
@@ -61,20 +66,33 @@ class ToGoList extends React.Component {
 
     render() {
         console.log("Edit List", this.state.showEdit);
+        console.log("state에 저장 ?", this.state)
         return (
             <>
             <section className="start_list">
-                <div className="mypage_mycontent_box">
-                    <h1>To Go List</h1>
-                    <div className="start_content_frame">
-                        <div className="mypage_mycontent_map"></div>
-                        <div className="mypage_mycontent_content">{this.props.content}</div>
-                        <div className="mypage_mycontent_tag">{this.props.tag}</div>
-                        <div>
-                            <button className="edit_post" onClick={this.showEditModal}>수정</button>
-                            <button className="remove_post" onClick={this.showDeleteModal}>삭제</button>
+                    <div className="mypage_mycontent_box">
+                        
+                        <h1>To Go List</h1>
+                        {this.state.post.length === 0 ? "가고 싶은 곳을 등록해주세요!" :  
+                this.state.post.map(function (el) {
+                    return (
+                        
+                            <div className="mypage_mycontent_frame">
+                                <div className="mypage_mycontent_map">{el.mapimgpath && el.mapimgpath}</div>
+                                <div className="mypage_mycontent_content">{el.content}</div>
+                                <div className="mypage_mycontent_tag">{el.hashtags.length === 0 ? '' :
+                                    el.hashtags.map(function (ele) {
+                                    return (ele.tag)
+                                })
+                            }</div>
+                         <div className="start_btn_box">
+                            <button className="edit_post" >수정</button>
+                            <button className="remove_post" >삭제</button>
                         </div>
-                    </div>
+                        </div>
+                    )
+                })
+            }
                 </div>
             </section>
             {this.state.showDelete ? <ListDeleteModal show={this.state.showDelete} closeModal = {this.closeDeleteModal}/>:null}
