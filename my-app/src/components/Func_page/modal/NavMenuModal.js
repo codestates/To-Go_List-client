@@ -15,21 +15,21 @@ export default class NavMenuModal extends React.Component {
     }
 
     handleLogout() {
-      axios({
-        method: 'post',
-        url: 'http://13.209.99.91:3001/user/signout',
-    }
-    ).then(res => {
-        console.log(res)
-        localStorage.removeItem('isLogin')
-        this.props.history.push("/")
-    }
+    //   axios({
+    //     method: 'post',
+    //     url: 'http://13.209.99.91:3001/user/signout',
+    // }
+    // ).then(res => {
+    //     console.log(res)
+    //     localStorage.removeItem('isLogin')
+    //     this.props.history.push("/")
+    // }
       
-    ).catch((err) => {
-        console.log(err)
+    // ).catch((err) => {
+    //     console.log(err)
 
         
-    }) 
+    // }) 
     }
     
 

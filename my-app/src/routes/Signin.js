@@ -65,16 +65,14 @@ class Signin extends React.Component{
             email: res.profileObj.email,
             googletoken: res.tokenId
         })
+        console.log("너 제대로 집어 넣는거 맞냐?",this.state.googletoken)
         axios({
             method: 'post',
 
-            url: 'http://13.209.99.91:3001/user/google',
+            url: 'https://togolist-server.ml/user/google',
 
             data: {
-            //   googleId : id,
-            //     email: email,
-            //     username: name,
-              tokenId: googletoken
+              tokenId: res.tokenId
             }
           })
             .then((data) => {
@@ -86,7 +84,6 @@ class Signin extends React.Component{
                   localStorage.setItem('isLogin', true)
                 this.props.history.push("/start");
             })
-        // this.props.history.push("/start");
     }
 
     responseFail = (err) => {
@@ -115,10 +112,9 @@ class Signin extends React.Component{
         if (!email || !password) {
           this.setState({show: true})
         }
-
         axios({
           method: 'post',
-          url: 'http://13.209.99.91:3001/user/signin',
+          url: 'https://togolist-server.ml/user/signin',
           data: {
             email,
             password

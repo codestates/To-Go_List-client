@@ -56,12 +56,14 @@
 .editinfo_username {
   margin-bottom: 0px;
   float: left;
+  margin-right: 70px;
 }
 .input_username {
   width: 50%;
 }
 .editinfo_phonenum {
   float: left;
+  margin-right: 20px;
 }
 
 .input_tel {
@@ -69,6 +71,7 @@
 }
 .editinfo_password {
   float: left;
+  margin-right: 40px;
 }
 .input_edit_password {
   width: 50%;

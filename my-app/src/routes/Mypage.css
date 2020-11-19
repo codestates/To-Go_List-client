@@ -1,3 +1,6 @@
+.page_sort {
+  justify-content: center;
+}
 .mypage_page {
   display: block;
   /* border: 2px solid black; */
@@ -10,8 +13,8 @@
   height: 50px;
   top: 0;
   width: 100vw;
-  padding-left: 42px;
-  padding-right: 42px;
+  padding-left: 10%;
+  padding-right: 10%;
   background-color: #e9ad17;
 }
 .mypage_logo_box {
@@ -25,17 +28,20 @@
 }
 .Mypage_logout_btn_box {
   float: right;
+  min-width: 80px;
   display: inline-block;
   height: 60%;
-  width: 10%;
+  width: 5%;
   border: 2px solid #937666;
   border-radius: 5px;
   transform: translateY(30%);
   text-align: center;
   margin-left: 2px;
   margin-right: 2px;
+  padding: 2px;
 }
 .Mypage_logout_btn {
+  font-size: 12px;
   color: #937666;
   text-align: center;
 }
@@ -45,18 +51,18 @@
   position: static;
   top: 0;
   align-content: center;
-  padding-left: 55px;
-  padding-right: 55px;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 .mypage_userinfo_frame {
-  height: 300px;
   border: 2px solid #937666;
   border-radius: 10px;
   padding-left: 20px;
   padding: 20px;
   height: auto;
+  min-width: 720px;
 }
 .mypage_userinfo_content_box {
   overflow: hidden;
@@ -64,6 +70,7 @@
   height: auto;
   padding: 20px;
 }
+
 .mypage_profile_photo {
   /* box-sizing: border-box; */
   overflow: hidden;
@@ -133,18 +140,19 @@ dd {
 .mypage_profile_edit {
   position: static;
   width: 100%;
+  height: 36px;
 }
 #mypage_edit_btn {
   float: right;
   cursor: pointer;
   text-align: center;
-  display: block;
+  /* display: block; */
   height: auto;
   width: 20%;
   font-size: 13px !important;
   font-weight: 700;
   padding: 9px 12px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   border-radius: 5px;
   background: 0;
   background-color: #e9ad17;
@@ -157,8 +165,8 @@ dd {
   position: static;
   /* border: 2px solid black; */
   height: auto;
-  padding-left: 55px;
-  padding-right: 55px;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-top: 20px;
   padding-bottom: 20px;
 
@@ -169,6 +177,7 @@ dd {
   border: 2px solid #937666;
   border-radius: 10px;
   padding: 20px;
+  min-width: 720px;
 }
 .mypage_mycontent_frame {
   height: auto;

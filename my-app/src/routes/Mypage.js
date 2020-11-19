@@ -30,17 +30,17 @@ class Mypage extends React.Component{
     componentDidMount() {
         console.log("didmount중입니다")
         
-        // axios.get('http://13.209.99.91:3001/user/info', {
-        //     headers: {
-        //         Accept : "application/json, text/plain, */*"
-        //     }
-        // }).then(response => {
-        //     console.log(response)
-        // })
+        axios.get('https://togolist-server.ml/user/info', {
+            headers: {
+                Accept : "application/json, text/plain, */*"
+            }
+        }).then(response => {
+            console.log('너는 뭔냐???????????',response)
+        })
 
         axios({
             method: 'get',
-            url: 'http://13.209.99.91:3001/user/info',
+            url: 'https://togolist-server.ml/user/info',
         },{withCredentials :true}
         ).then((res) => {
                 this.setState({
@@ -51,7 +51,7 @@ class Mypage extends React.Component{
         
         axios({
             method: 'get',
-            url: 'http://13.209.99.91:3001/post',
+            url: 'https://togolist-server.ml/post',
         },{withCredentials :true}
         ).then((res) => {
                 this.setState({
@@ -65,7 +65,7 @@ class Mypage extends React.Component{
     editUserInfo = () => {
         axios({
             method: 'get',
-            url: 'http://13.209.99.91:3001/user/info',
+            url: 'https://togolist-server.ml/user/info',
         },{withCredentials :true}
         ).then((res) => {
                 this.setState({
@@ -90,7 +90,7 @@ class Mypage extends React.Component{
     
     render(){
         return (
-            
+            <div className="page_sort">
             <div className="mypage_page">
                 {!localStorage.isLogin && <Redirect to="/" />}
                 {console.log('디드마운트하면 없어져? ',this.state.userInfo)}
@@ -104,7 +104,8 @@ class Mypage extends React.Component{
                 <UserInfo passwordcheck={this.editInfoPasswordShow} userinfo={this.state.userInfo} />
                 <MyToGoList post={this.state.userPost }/>
                 <Footer />
-            </div>
+                </div>
+                </div>
         )
     }
 }
