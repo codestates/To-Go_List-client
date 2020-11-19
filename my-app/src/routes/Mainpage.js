@@ -26,12 +26,13 @@ class Mainpage extends React.Component{
       clientUnsplashId: UNSPLASH_API_KEY,
       naverClientId:NAVER_MAP_CLIENTID,
       naverClientSecreteKey: NAVER_MAP_SECRETE_KEY,
-      latitude: null,
-      longitude: null,
+      latitude: 127.0278577,
+      longitude: 37.1683157,
       search: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleMapSubmit = this.handleMapSubmit.bind(this);
+    // this.handleMapSubmit = this.handleMapSubmit.bind(this);
+    this.getLatLng = this.getLatLng.bind(this);
   }
 
   componentDidMount(){
@@ -62,17 +63,41 @@ class Mainpage extends React.Component{
     }).catch(err => console.log("데이터가 없습니다."))
  }
 
- handleMapSubmit(value){
+//  handleMapSubmit(value){
+//   const naverClientId= this.state.naverClientId;
+//   const naverClientSecreteKey = this.state.naverClientSecreteKey;
+//   let longitudeY = this.state.longitude;
+//   let latitudeX = this.state.latitude;
+//   const searhResult = value;
+
+//   console.log(searhResult, naverClientId);
+//   // let url = '/naver/map-static/v2/raster';
+//   let url = `/naver/map-geocode/v2/geocode?query=${value}&coordinate=${latitudeX},${longitudeY}`
+//   axios.get(url, {
+//     headers:{
+//       "X-NCP-APIGW-API-KEY-ID": naverClientId,
+//       "X-NCP-APIGW-API-KEY": naverClientSecreteKey,
+//     }
+//   }).then((res) => {
+//     console.log(res.data.addresses[0].x, res.data.addresses[0].y)
+//     this.setState({
+//       latitude: res.data.addresses[0].x,
+//       longitude: res.data.addresses[0].y,
+//     });
+//     console.log(url);
+//   }).catch(err => console.log("데이터가 없습니다."));
+// }
+
+
+  async getLatLng(value){
   const naverClientId= this.state.naverClientId;
   const naverClientSecreteKey = this.state.naverClientSecreteKey;
   let longitudeY = this.state.longitude;
   let latitudeX = this.state.latitude;
   const searhResult = value;
-
-  console.log(searhResult, naverClientId);
-  let url = `/naverMap/map-geocode/v2/geocode?query=${value}`
+  let url = `/naver/map-geocode/v2/geocode?query=${value}`
   console.log(url)
-  axios.get(url, {
+  await axios.get(url, {
     headers:{
       "X-NCP-APIGW-API-KEY-ID": naverClientId,
       "X-NCP-APIGW-API-KEY": naverClientSecreteKey,
@@ -84,17 +109,21 @@ class Mainpage extends React.Component{
       longitude: res.data.addresses[0].y,
     })
   }).catch(err => console.log("데이터가 없습니다."));
-  
 }
 
+
+
+
   render(){
-    const {isLoading} = this.state;
+    console.log("render first")
     return(
       <div className="container">
         <Nav />
         <Section0 />
         <Section1 />
-        <Section2 handleSubmit = {this.handleMapSubmit} search = {this.state.search} lat ={this.state.latitude} lng = {this.state.longitude}/>
+        <Section2 handleSubmit = {this.handleMapSubmit} getLatLng = {this.getLatLng}
+        lat ={this.state.latitude} 
+        lng = {this.state.longitude}/>
         <Section3 handleSubmit = {this.handleSubmit} photos = {this.state.photos}/>
         <Footer />
 	    </div>
