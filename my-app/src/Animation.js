@@ -183,6 +183,6 @@ window.addEventListener('scroll', () =>{
 })
 
 window.addEventListener("resize", setLayout);
-// setLayout();
+setLayout();
 
   })()};  

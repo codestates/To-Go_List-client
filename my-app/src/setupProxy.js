@@ -9,5 +9,14 @@ module.exports = function(app){
               '^/api/':'/'
           }
         })
-    )
+    );
+    app.use(
+        createProxyMiddleware('/naverMap', {
+          target: 'https://naveropenapi.apigw.ntruss.com',
+          changeOrigin: true,
+          pathRewrite:{
+              '^/naverMap/':'/'
+          }
+        })
+    );
 };
