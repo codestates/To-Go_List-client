@@ -11,11 +11,11 @@ module.exports = function(app){
         })
     );
     app.use(
-        createProxyMiddleware('/naverMap', {
+        createProxyMiddleware('/naver', {
           target: 'https://naveropenapi.apigw.ntruss.com',
           changeOrigin: true,
           pathRewrite:{
-              '^/naverMap/':'/'
+              '^/naver/':'/'
           }
         })
     );

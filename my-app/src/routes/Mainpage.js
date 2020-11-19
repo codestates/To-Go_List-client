@@ -24,10 +24,6 @@ class Mainpage extends React.Component{
       isLoading: true,
       photos:fakeDate,
       clientUnsplashId: UNSPLASH_API_KEY,
-      naverClientId:NAVER_MAP_CLIENTID,
-      naverClientSecreteKey: NAVER_MAP_SECRETE_KEY,
-      latitude: null,
-      longitude: null,
       search: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -70,7 +66,7 @@ class Mainpage extends React.Component{
   const searhResult = value;
 
   console.log(searhResult, naverClientId);
-  let url = `/naverMap/map-geocode/v2/geocode?query=${value}`
+  let url = `/naver/map-geocode/v2/geocode?query=${value}&coordinate=${latitudeX},${longitudeY}`
   console.log(url)
   axios.get(url, {
     headers:{
@@ -84,8 +80,8 @@ class Mainpage extends React.Component{
       longitude: res.data.addresses[0].y,
     })
   }).catch(err => console.log("데이터가 없습니다."));
-  
 }
+
 
   render(){
     const {isLoading} = this.state;
