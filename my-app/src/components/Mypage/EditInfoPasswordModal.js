@@ -7,7 +7,7 @@ export default class EditInfoPasswordModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            password : ''
+            password : null
         }
         this.CheckUserPassword = this.CheckUserPassword.bind(this)
     }
@@ -16,7 +16,7 @@ export default class EditInfoPasswordModal extends React.Component {
         const { password } = this.state
         axios({
             method: 'post',
-            url: 'http://13.209.99.91:3001/user/checkpwd',
+            url: 'https://togolist-server.ml/user/checkpwd',
             data: {
             password: password
             }

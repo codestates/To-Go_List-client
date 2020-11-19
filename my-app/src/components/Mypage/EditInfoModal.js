@@ -26,7 +26,7 @@ export default class EditInfoModal extends React.Component {
         console.log('patch합니다')
         axios({
           method: 'patch',
-          url: 'http://13.209.99.91:3001/user/editinfo',
+          url: 'https://togolist-server.ml/user/editinfo',
             data: {
                 phonenum,
                 username,

@@ -40,11 +40,12 @@ class UserInfo extends React.Component {
                                     </dl>
                                 </div>
                                 </div>
-                                </div>
+                        </div>
+                        </div>
                             <div className="mypage_profile_edit">
                                 <button id="mypage_edit_btn" onClick={() => this.props.passwordcheck()}>편집</button>
                             </div>
-                        </div>
+                        
                 </div>
                 </div>
         );
