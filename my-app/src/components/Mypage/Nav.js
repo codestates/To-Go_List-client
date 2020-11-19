@@ -10,14 +10,14 @@ class Nav extends React.Component {
         this.state = {
 
         }
-        this.handleLogout = this.handleLogout.bind(this)
+        // this.handleLogout = this.handleLogout.bind(this)
     }
     handleLogout() {
         
 
         axios({
             method: 'post',
-            url: 'http://13.209.99.91:3001/user/signout',
+            url: 'https://togolist-server.ml/user/signout',
         }
         ).then(res => {
             console.log(res)
@@ -41,7 +41,7 @@ class Nav extends React.Component {
                  </Link>
                 </div>
                 <div className="Mypage_logout_btn_box">
-                    <Link to='/' className="Mypage_logout_btn" onClick={() => { this.handleLogout() }}>
+                    <Link to='/' className="Mypage_logout_btn" onClick={this.handleLogout}>
                         로그아웃
                 </Link>
                 </div>

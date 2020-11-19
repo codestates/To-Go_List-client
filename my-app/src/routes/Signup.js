@@ -77,13 +77,13 @@ class Signup extends React.Component {
 
         {
             axios
-                .post("http://13.209.99.91:3001/user/signup", {
+                .post("https://togolist-server.ml/user/signup", {
                     email: email,
                     password: password,
                     passwordCheck: passwordCheck,
-                    name: name,
+                    username: name,
                     birthDay: birthDay,
-                    mobile: mobile
+                    phonenum: mobile
                 })
             this.props.history.push("/signin");
         }
@@ -95,7 +95,7 @@ class Signup extends React.Component {
                 <div className="signup_frame">
                     <div className="login_logo">
                         <Link to='/' className="signup_link">
-                            <img className="signup_page_logo" src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ef8084f5-733a-43ab-bd87-e1c17835ce76/logo-black.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201114%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201114T160641Z&X-Amz-Expires=86400&X-Amz-Signature=ca905a346ec454def0012675fc9abce879419a84139d5f7775b9241f210fd604&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22logo-black.png%22" />
+                            <img className="signup_page_logo" src="http://penzim.synology.me/image/To-Go_List-logo-black.png" />
                             <img className="signup_page_text_logo" src="http://penzim.synology.me/image/firstProject/icon/To-Go_List-logo-black.png" />
                         </Link>
 
