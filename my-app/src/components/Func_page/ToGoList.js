@@ -1,13 +1,19 @@
 /* eslint-disable */
 
 import React from "react";
+
 import axios from "axios"
+
+
+import ListDeleteModal from "./modal/ListDeleteModal";
+import ListEditModal from "./modal/ListEditModal";
 
 
 class ToGoList extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
+
             content: "",
             location: "",
             mapimgpath: "",
@@ -30,8 +36,38 @@ class ToGoList extends React.Component {
     }
 
 
+
+            showDelete: false,
+            showEdit:false,
+        };
+    }
+    showDeleteModal = () =>{
+        this.setState({
+            showDelete: !this.state.showDelete,
+        });
+      }
+  
+      closeDeleteModal = () =>{
+          this.setState({
+              showDelete: !this.state.showDelete,
+          });
+      }
+      showEditModal = () =>{
+        this.setState({
+            showEdit: !this.state.showEdit,
+        });
+      }
+  
+      closeEditModal = () =>{
+          this.setState({
+              showEdit: !this.state.showEdit,
+          });
+      }
+
     render() {
+        console.log("Edit List", this.state.showEdit);
         return (
+            <>
             <section className="start_list">
                 <div className="mypage_mycontent_box">
                     <h1>To Go List</h1>
@@ -40,14 +76,19 @@ class ToGoList extends React.Component {
                         <div className="mypage_mycontent_content">{this.props.content}</div>
                         <div className="mypage_mycontent_tag">{this.props.tag}</div>
                         <div>
-                            <button className="edit_post">수정</button>
-                            <button className="remove_post">삭제</button>
+                            <button className="edit_post" onClick={this.showEditModal}>수정</button>
+                            <button className="remove_post" onClick={this.showDeleteModal}>삭제</button>
                         </div>
                     </div>
                 </div>
             </section>
-        )
+            {this.state.showDelete ? <ListDeleteModal show={this.state.showDelete} closeModal = {this.closeDeleteModal}/>:null}
+            {this.state.showDelete ? <div onClick={this.closeDeleteModal} className="back_drop"></div>:null}
+            {this.state.showEdit ? <ListEditModal show={this.state.showEdit} closeModal = {this.closeEditModal}/>:null}
+            {this.state.showEdit ? <div onClick={this.closeEditModal} className="back_drop"></div>:null}
+            </>
+        );
     }
 }
 
-export default ToGoList
+export default ToGoList;

@@ -7,7 +7,7 @@ import SearchModal from "../../components/SearchModal"
 
 class Post extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             result: [],
             location: "",
@@ -16,6 +16,7 @@ class Post extends React.Component {
             content: "",
             mapimgpath: ""
         }
+
     }
 
     handleChange = (key) => (e) => {
@@ -108,9 +109,11 @@ class Post extends React.Component {
                 </div>
                 <SearchModal show={this.state.isModalOpen} closeModal={this.closeModal} />
             </div>
-        )
+        );
     }
 }
 
+
 export default Post
+
 

@@ -2,7 +2,9 @@
 import React from "react";
 import './Mainpage.css';
 import axios from "axios"
-import { UNSPLASH_API_KEY } from "../config/config";
+import { UNSPLASH_API_KEY} from "../config/config";
+import { NAVER_MAP_CLIENTID } from "../config/config";
+import { NAVER_MAP_SECRETE_KEY } from "../config/config";
 import Nav from '../components/main_page/Nav';
 import "../Animation";
 import Section0 from '../components/main_page/Section0';
@@ -12,6 +14,8 @@ import Section3 from '../components/main_page/Section3';
 import Footer from '../components/main_page/Footer';
 import { fakeDate } from '../fakeData';
 
+axios.defaults.withCredentials = true;
+
 
 class Mainpage extends React.Component{
   constructor(props){
@@ -19,24 +23,37 @@ class Mainpage extends React.Component{
     this.state = {
       isLoading: true,
       photos:fakeDate,
-      clientId: UNSPLASH_API_KEY,
+      clientUnsplashId: UNSPLASH_API_KEY,
+      naverClientId:NAVER_MAP_CLIENTID,
+      naverClientSecreteKey: NAVER_MAP_SECRETE_KEY,
+      latitude: 127.0278577,
+      longitude: 37.1683157,
+      search: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleMapSubmit = this.handleMapSubmit.bind(this);
+    this.getLatLng = this.getLatLng.bind(this);
   }
 
   componentDidMount(){
     const script = document.createElement("script");
     script.src = "../Animation.js";
-    script.type="text/jsx"
+    script.setAttribute("id", "animation_script");
+    script.type="text/jsx";
     script.async = true;
-    document.body.appendChild(script)    
+    document.body.appendChild(script);
   }
-
   
+  componentWillUnmount(){
+    let script = document.querySelector("#animation_script");
+    if(script){
+      script.remove()
+    }
+  }
   handleSubmit(value){
-    const clientId= this.state.clientId
-    const searhResult = value
-    let url = `/search/photos?page=1&query=${searhResult}&client_id=${clientId}` 
+    const clientUnsplashId= this.state.clientUnsplashId;
+    const searhResult = value;
+    let url = `/api/search/photos?page=1&query=${searhResult}&client_id=${clientUnsplashId}` 
     console.log(url)
     axios.get(url).then((res) => {
       console.log(res)
@@ -46,14 +63,67 @@ class Mainpage extends React.Component{
     }).catch(err => console.log("데이터가 없습니다."))
  }
 
+//  handleMapSubmit(value){
+//   const naverClientId= this.state.naverClientId;
+//   const naverClientSecreteKey = this.state.naverClientSecreteKey;
+//   let longitudeY = this.state.longitude;
+//   let latitudeX = this.state.latitude;
+//   const searhResult = value;
+
+//   console.log(searhResult, naverClientId);
+//   // let url = '/naver/map-static/v2/raster';
+//   let url = `/naver/map-geocode/v2/geocode?query=${value}&coordinate=${latitudeX},${longitudeY}`
+//   axios.get(url, {
+//     headers:{
+//       "X-NCP-APIGW-API-KEY-ID": naverClientId,
+//       "X-NCP-APIGW-API-KEY": naverClientSecreteKey,
+//     }
+//   }).then((res) => {
+//     console.log(res.data.addresses[0].x, res.data.addresses[0].y)
+//     this.setState({
+//       latitude: res.data.addresses[0].x,
+//       longitude: res.data.addresses[0].y,
+//     });
+//     console.log(url);
+//   }).catch(err => console.log("데이터가 없습니다."));
+// }
+
+
+  async getLatLng(value){
+  const naverClientId= this.state.naverClientId;
+  const naverClientSecreteKey = this.state.naverClientSecreteKey;
+  let longitudeY = this.state.longitude;
+  let latitudeX = this.state.latitude;
+  const searhResult = value;
+  let url = `/naver/map-geocode/v2/geocode?query=${value}`
+  console.log(url)
+  await axios.get(url, {
+    headers:{
+      "X-NCP-APIGW-API-KEY-ID": naverClientId,
+      "X-NCP-APIGW-API-KEY": naverClientSecreteKey,
+    }
+  }).then((res) => {
+    console.log(res.data.addresses[0].x, res.data.addresses[0].y)
+    this.setState({
+      latitude: res.data.addresses[0].x,
+      longitude: res.data.addresses[0].y,
+    })
+  }).catch(err => console.log("데이터가 없습니다."));
+}
+
+
+
+
   render(){
-    const {isLoading} = this.state;
+    console.log("render first")
     return(
       <div className="container">
         <Nav />
         <Section0 />
         <Section1 />
-        <Section2 />
+        <Section2 handleSubmit = {this.handleMapSubmit} getLatLng = {this.getLatLng}
+        lat ={this.state.latitude} 
+        lng = {this.state.longitude}/>
         <Section3 handleSubmit = {this.handleSubmit} photos = {this.state.photos}/>
         <Footer />
 	    </div>
