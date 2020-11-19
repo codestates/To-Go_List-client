@@ -12,13 +12,14 @@ import ListEditModal from "./modal/ListEditModal";
 class ToGoList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-
+        this.state = {           
             content: "",
             location: "",
             mapimgpath: "",
             tag: "",
-            info: ""
+            info: "",
+            showEdit: false,
+            showDelete: false,
         }
     }
 
@@ -35,12 +36,6 @@ class ToGoList extends React.Component {
             })
     }
 
-
-
-            showDelete: false,
-            showEdit:false,
-        };
-    }
     showDeleteModal = () =>{
         this.setState({
             showDelete: !this.state.showDelete,

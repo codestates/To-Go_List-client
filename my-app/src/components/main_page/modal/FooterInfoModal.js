@@ -21,7 +21,7 @@ export default class FooterInfoModal extends React.Component {
                   <h4>info</h4>
                   <p>
                     프로젝트: To-Go_List<br/>
-                    프론트 : 이창근<br/>
+                    프론트 : 배채겸, 박지국, 이창근<br/>
                     백앤드: 이승철
                   </p>
                 </div>

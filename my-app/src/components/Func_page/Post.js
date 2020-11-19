@@ -2,7 +2,7 @@
 
 import React from "react";
 import axios from "axios";
-import SearchModal from "../../components/SearchModal"
+import SearchModal from "./modal/SearchModal"
 import { NAVER_MAP_CLIENTID } from "../../config/config";
 import { NAVER_MAP_SECRETE_KEY } from "../../config/config";
 
@@ -10,7 +10,6 @@ class Post extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          value: "",
           isModalOpen: false,
           latitude: null,
           longitude: null,
@@ -23,12 +22,6 @@ class Post extends React.Component {
         }
         this.getLatLng = this.getLatLng.bind(this);
     }
-
-    handleChange = (e) => {
-        console.log(e.target.value)
-        this.setState({ value: e.target.value }
-        );
-    };
 
     handleKeyChange = (key) => (e) => {
         this.setState({ [key]: e.target.value }
@@ -107,14 +100,14 @@ class Post extends React.Component {
                 <div className="start_newpost_frame">
                     <input id="input_text" type="text" placeholder="내용을 입력하세요" onChange={this.handleKeyChange("content")} value={this.state.content}></input>
                     <input id="input_tag" type="text" placeholder="태그를 입력하세요" onChange={this.handleKeyChange("tag")} value={this.state.tag}></input>
-                    <input id="input_location" type="text" placeholder="위치를 검색하세요" onChange={this.handleChange} value={this.state.location}></input>
+                    <input id="input_location" type="text" placeholder="위치를 검색하세요" onChange={this.handleKeyChange("location")} ></input>
                     <button className="search_location" onClick={(event) =>{
                         this.openModal()
-                        this.getLatLng(this.state.value)
+                        this.getLatLng(this.state.location)
                     }}>검색</button>
                     <button className="add_btn" type="submit" onClick={() => { this.handleSubmit(), this.hashTag() }}>추가하기</button>
                 </div>
-                <SearchModal show={this.state.isModalOpen} closeModal={this.closeModal} value = {this.state.value} lat = {this.state.latitude} lng = {this.state.longitude}/>
+                <SearchModal show={this.state.isModalOpen} closeModal={this.closeModal} value = {this.state.location} lat = {this.state.latitude} lng = {this.state.longitude}/>
             </div>
         );
     }
@@ -122,5 +115,3 @@ class Post extends React.Component {
 
 
 export default Post
-
-
