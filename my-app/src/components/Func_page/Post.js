@@ -16,6 +16,10 @@ class Post extends React.Component {
           longitude: null,
           naverClientId:NAVER_MAP_CLIENTID,
           naverClientSecreteKey: NAVER_MAP_SECRETE_KEY,
+          location: "",
+          tag: "",
+          content: "",
+          mapimgpath: ""
         }
         this.getLatLng = this.getLatLng.bind(this);
     }
@@ -26,13 +30,53 @@ class Post extends React.Component {
         );
     };
 
+    handleKeyChange = (key) => (e) => {
+        this.setState({ [key]: e.target.value }
+        );
+    };
+
     openModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     }
     closeModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     }
-
+    
+    hashTag = () => {
+        const { tag } = this.state;
+        axios
+            .post("http://localhost:3001/hashtag/new", {
+                tag: tag
+            })
+            .then((res) => {
+                console.log(res.response)
+            })
+            .catch((err) => {
+                if (err.response) {
+                    console.log(err.response.data);
+                }
+            })
+    }
+    handleSubmit = () => {
+        const { mapimgpath, content, location } = this.state;
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/post/new',
+            data: {
+                content: content,
+                location: location,
+                mapimgpath: mapimgpath
+            }
+        })
+            .then((res) => {
+                console.log(res.response)
+            })
+            .catch((err) => {
+                if (err.response) {
+                    console.log(err.response.data);
+                }
+            })
+    };
 
     async getLatLng(value){
       console.log("pass")
@@ -61,14 +105,14 @@ class Post extends React.Component {
         return (
             <div className="start_newpost">
                 <div className="start_newpost_frame">
-                    <input id="input_text" type="text" placeholder="내용을 입력하세요"></input>
-                    <input id="input_tag" type="text" placeholder="태그를 입력하세요"></input>
-                    <input id="input_location" type="text" placeholder="위치를 검색하세요" onChange={this.handleChange}></input>
+                    <input id="input_text" type="text" placeholder="내용을 입력하세요" onChange={this.handleKeyChange("content")} value={this.state.content}></input>
+                    <input id="input_tag" type="text" placeholder="태그를 입력하세요" onChange={this.handleKeyChange("tag")} value={this.state.tag}></input>
+                    <input id="input_location" type="text" placeholder="위치를 검색하세요" onChange={this.handleChange} value={this.state.location}></input>
                     <button className="search_location" onClick={(event) =>{
                         this.openModal()
                         this.getLatLng(this.state.value)
                     }}>검색</button>
-                    <button className="add_btn" type="submit">추가하기</button>
+                    <button className="add_btn" type="submit" onClick={() => { this.handleSubmit(), this.hashTag() }}>추가하기</button>
                 </div>
                 <SearchModal show={this.state.isModalOpen} closeModal={this.closeModal} value = {this.state.value} lat = {this.state.latitude} lng = {this.state.longitude}/>
             </div>
