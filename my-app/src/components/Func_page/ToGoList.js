@@ -19,7 +19,7 @@ class ToGoList extends React.Component {
     componentDidMount() {
         axios({
             method: "get",
-            url: "https://togolist.com/post"
+            url: "http://localhost:3001/post"
         })
             .then((res) => {
                 console.log(res)
