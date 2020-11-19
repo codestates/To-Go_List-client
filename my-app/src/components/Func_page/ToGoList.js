@@ -13,13 +13,13 @@ axios.defaults.withCredentials = true;
 class ToGoList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showEdit: false,
-            showDelete: false,
+        this.state = {           
             content: "",
             location: "",
             mapimgpath: "",
             tag: "",
+            showEdit: false,
+            showDelete: false,
             post: ""
         }
         // this.showEditModal = this.showEditModal.bind(this)
@@ -40,8 +40,6 @@ class ToGoList extends React.Component {
             console.log("기능페이지 포스트 받아오니?",res)
             })
     }
-
-
 
     showDeleteModal = () =>{
         this.setState({
