@@ -10,14 +10,17 @@ class Post extends React.Component {
         super(props);
         this.state = {
             result: [],
-            value: "",
-            isModalOpen: false
+            location: "",
+            isModalOpen: false,
+            tag: "",
+            content: "",
+            mapimgpath: ""
         }
 
     }
 
-    handleChange = (e) => {
-        this.setState({ value: e.target.value }
+    handleChange = (key) => (e) => {
+        this.setState({ [key]: e.target.value }
         );
     };
 
@@ -31,7 +34,7 @@ class Post extends React.Component {
     searchhandle = async () => {
         const ID_KEY = '5depur52lv';
         const SECRET_KEY = 'HvYrvVGgpBrsf5GVeYPf8PV8PcsnTBDhAgBVYRbC';
-        const search = this.state.value;
+        const search = this.state.location;
         try {
             if (search === "") {
                 this.setState({ result: [] })
@@ -50,15 +53,59 @@ class Post extends React.Component {
         } catch (error) { console.log(error); }
     }
 
+
+    hashTag = () => {
+        const { tag } = this.state;
+        axios
+            .post("http://localhost:3001/hashtag/new", {
+                tag: tag
+            })
+            .then((res) => {
+                console.log(res.response)
+            })
+            .catch((err) => {
+                if (err.response) {
+                    console.log(err.response.data);
+                }
+            })
+    }
+
+
+    handleSubmit = () => {
+        const { mapimgpath, content, location } = this.state;
+        axios({
+            method: 'post',
+            url: 'http://localhost:3001/post/new',
+            data: {
+                content: content,
+                location: location,
+                mapimgpath: mapimgpath
+            }
+
+        })
+            .then((res) => {
+                console.log(res.response)
+            })
+            .catch((err) => {
+                if (err.response) {
+                    console.log(err.response.data);
+                }
+            })
+    };
+
+
+
+
+
     render() {
         return (
             <div className="start_newpost">
                 <div className="start_newpost_frame">
-                    <input id="input_text" type="text" placeholder="내용을 입력하세요"></input>
-                    <input id="input_tag" type="text" placeholder="태그를 입력하세요"></input>
-                    <input id="input_location" type="text" placeholder="위치를 검색하세요" onChange={this.handleChange} value={this.state.value}></input>
+                    <input id="input_text" type="text" placeholder="내용을 입력하세요" onChange={this.handleChange("content")} value={this.state.content}></input>
+                    <input id="input_tag" type="text" placeholder="태그를 입력하세요" onChange={this.handleChange("tag")} value={this.state.tag}></input>
+                    <input id="input_location" type="text" placeholder="위치를 검색하세요" onChange={this.handleChange("loction")} value={this.state.location}></input>
                     <button className="search_location" onChange={this.searchhandle} onClick={this.openModal} >검색</button>
-                    <button className="add_btn" type="submit">추가하기</button>
+                    <button className="add_btn" type="submit" onClick={() => { this.handleSubmit(), this.hashTag() }}>추가하기</button>
                 </div>
                 <SearchModal show={this.state.isModalOpen} closeModal={this.closeModal} />
             </div>

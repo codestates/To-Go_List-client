@@ -1,11 +1,42 @@
+/* eslint-disable */
+
 import React from "react";
+
+import axios from "axios"
+
+
 import ListDeleteModal from "./modal/ListDeleteModal";
 import ListEditModal from "./modal/ListEditModal";
+
 
 class ToGoList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+
+            content: "",
+            location: "",
+            mapimgpath: "",
+            tag: "",
+            info: ""
+        }
+    }
+
+    componentDidMount() {
+        axios({
+            method: "get",
+            url: "http://localhost:3001/post"
+        })
+            .then((res) => {
+                console.log(res)
+                this.setState({
+                    content: res.data.content
+                })
+            })
+    }
+
+
+
             showDelete: false,
             showEdit:false,
         };
@@ -32,6 +63,7 @@ class ToGoList extends React.Component {
               showEdit: !this.state.showEdit,
           });
       }
+
     render() {
         console.log("Edit List", this.state.showEdit);
         return (
@@ -41,8 +73,8 @@ class ToGoList extends React.Component {
                     <h1>To Go List</h1>
                     <div className="start_content_frame">
                         <div className="mypage_mycontent_map"></div>
-                        <div className="mypage_mycontent_content">내용이 들어갈 겁니다!</div>
-                        <div className="mypage_mycontent_tag">태그태그</div>
+                        <div className="mypage_mycontent_content">{this.props.content}</div>
+                        <div className="mypage_mycontent_tag">{this.props.tag}</div>
                         <div>
                             <button className="edit_post" onClick={this.showEditModal}>수정</button>
                             <button className="remove_post" onClick={this.showDeleteModal}>삭제</button>
