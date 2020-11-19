@@ -34,8 +34,8 @@
   position: static;
   top: 0;
   align-content: center;
-  padding-left: 55px;
-  padding-right: 55px;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -105,8 +105,8 @@ dd {
 .start_list {
   position: static;
   /* border: 2px solid black; */
-  padding-left: 55px;
-  padding-right: 55px;
+  padding-left: 10%;
+  padding-right: 10%;
   padding-top: 20px;
   padding-bottom: 20px;
   height: auto;
