@@ -13,13 +13,13 @@ axios.defaults.withCredentials = true;
 class ToGoList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showEdit: false,
-            showDelete: false,
+        this.state = {           
             content: "",
             location: "",
             mapimgpath: "",
             tag: "",
+            showEdit: false,
+            showDelete: false,
             post: ""
         }
         // this.showEditModal = this.showEditModal.bind(this)
@@ -41,14 +41,16 @@ class ToGoList extends React.Component {
             })
     }
 
+
     componentDidUpdate(prevProps) {
-        // 전형적인 사용 사례 (props 비교를 잊지 마세요)
+        
         if (this.props.post !== prevProps.post) {
             this.setState({
                 post : this.props.post
             })
         }
       }
+
 
 
     showDeleteModal = () =>{
