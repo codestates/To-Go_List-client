@@ -1,11 +1,9 @@
 /* eslint-disable */
-
 import React from "react";
 import axios from "axios";
 import SearchModal from "./modal/SearchModal"
 import { NAVER_MAP_CLIENTID } from "../../config/config";
 import { NAVER_MAP_SECRETE_KEY } from "../../config/config";
-
 class Post extends React.Component {
     constructor(props) {
         super(props);
@@ -27,42 +25,44 @@ class Post extends React.Component {
         this.setState({ [key]: e.target.value }
         );
     };
-
     openModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     }
     closeModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     }
-    
-    hashTag = () => {
-        const { tag } = this.state;
-        axios
-            .post("http://localhost:3001/hashtag/new", {
-                tag: tag
-            })
-            .then((res) => {
-                console.log(res.response)
-            })
-            .catch((err) => {
-                if (err.response) {
-                    console.log(err.response.data);
-                }
-            })
-    }
+
     handleSubmit = () => {
         const { mapimgpath, content, location } = this.state;
         axios({
             method: 'post',
-            url: 'http://localhost:3001/post/new',
+            url: 'https://togolist-server.ml/post/new',
             data: {
                 content: content,
                 location: location,
                 mapimgpath: mapimgpath
             }
+
         })
             .then((res) => {
-                console.log(res.response)
+                console.log('포스트 서브밋 제대로 되는지 봅시다', res)
+
+                axios({
+                    method: 'post',
+                    url: 'https://togolist-server.ml/hashtag/new',
+                    data: {
+                        postid: res.data.id,
+                        tag: this.state.tag
+                    }
+                })
+                    .then((res) => {
+                        console.log('해시태그는 제대로 되는지 한번 봅시다', res)
+                    })
+                    .catch((err) => {
+                        if (err.response) {
+                            console.log(err.response.data);
+                        }
+                    })
             })
             .catch((err) => {
                 if (err.response) {
@@ -93,7 +93,6 @@ class Post extends React.Component {
         })
       }).catch(err => console.log("데이터가 없습니다."));
     }
-      
     render() {
         return (
             <div className="start_newpost">
@@ -105,7 +104,7 @@ class Post extends React.Component {
                         this.openModal()
                         this.getLatLng(this.state.location)
                     }}>검색</button>
-                    <button className="add_btn" type="submit" onClick={() => { this.handleSubmit(), this.hashTag() }}>추가하기</button>
+                    <button className="add_btn" type="submit" onClick={() => { this.handleSubmit(), this.props.createpost()}} >추가하기</button>
                 </div>
                 <SearchModal show={this.state.isModalOpen} closeModal={this.closeModal} value = {this.state.location} lat = {this.state.latitude} lng = {this.state.longitude}/>
             </div>
@@ -113,5 +112,5 @@ class Post extends React.Component {
     }
 }
 
-
 export default Post
+

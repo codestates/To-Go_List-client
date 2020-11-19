@@ -113,7 +113,7 @@ dd {
   margin: 0 auto;
 }
 .mypage_mycontent_box {
-  height: 600px;
+  height: auto;
   border: 2px solid #937666;
   border-radius: 10px;
   padding: 20px;
@@ -281,4 +281,8 @@ dd {
   font-size: 13px !important;
   font-weight: 700;
   margin-right: 10px;
+}
+
+.start_btn_box {
+  height: 40px;
 }
