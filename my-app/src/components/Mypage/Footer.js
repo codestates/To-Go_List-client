@@ -15,7 +15,7 @@ class Footer extends React.Component {
     handleUserRemove = () => {
         axios({
             method: 'post',
-            url: 'http://13.209.99.91:3001/user/remove',
+            url: 'https://togolist-server.ml/user/remove',
         },{withCredentials :true}
         ).then((res) => {
             localStorage.removeItem('isLogin')
