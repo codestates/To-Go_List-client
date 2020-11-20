@@ -173,22 +173,26 @@ a {
 }
 
 .container #scroll_section_2 .gif_part {
-  height: 300px;
-  width: 70%;
-  border: 1px solid blue;
+  height: 790px;
+  border-radius: 25px;
   margin: 0 auto;
+  width: 800px;
+  /* fractoion 단위?  width를 지정하고 그비율에 맞게*/
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .container #scroll_section_2 .gif_description {
-  height: 150px;
+  height: 200px;
   width: 70%;
-  border: 1px solid green;
   margin: 15px auto;
-}
-.container #scroll_section_2 .gif_description p {
+  border-radius: 20px;
+  background-color: #dddddd;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.container #scroll_section_2 .gif_description p {
   margin: 10px auto;
   font-size: 1.2rem;
   line-height: 1.5;
@@ -201,6 +205,7 @@ a {
   left: 40%;
   margin-top: 50vh;
   padding-top: 50vh;
+  padding-bottom: 30vh;
 }
 
 #show_scene_0 #scroll_section_0 .sticky_elem,

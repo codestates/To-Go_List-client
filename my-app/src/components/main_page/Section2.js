@@ -22,7 +22,7 @@ class Section2 extends React.Component {
     return (
       <>
         <section className="scroll_section" id="scroll_section_2">
-          <div className="gif_part" id="map" style={({ width: '100%' }, { height: '400px' })}>
+          {/* <div className="gif_part" id="map" style={({ width: '100%' }, { height: '400px' })}>
             <RenderAfterNavermapsLoaded
               ncpClientId={NAVER_MAP_CLIENTID}
               error={<p>Maps Load Error</p>}
@@ -42,15 +42,18 @@ class Section2 extends React.Component {
               <button className="btn" onClick={() => this.props.getLatLng(this.state.value)}>
                 Search
               </button>
-            </div>
+            </div> */}
+          {/* </div> */}
+          <div className="gif_part"style={{backgroundImage:`url(https://penzim.synology.me/image/firstProject/newpost_main.gif)`}}> 
+          </div>
+            <div className="gif_description">
             <p>
-              {' '}
-              기능 설명<br></br>
-              1. 저장했던 장소는 태그했던 내용을 바탕으로 검색하면 됩니다.<br></br>
-              2. 저장한 데이터를 마이페이지에서 쉽게 확인 가능합니다<br></br>
+              기능 설명<br/>
+              1. 저장했던 장소는 태그했던 내용을 바탕으로 검색하면 됩니다.<br/>
+              2. 저장한 데이터를 마이페이지에서 쉽게 확인 가능합니다<br/>
               3. 우선순위를 설정해서 가고 싶은 장소의 순위를 정할 수 있습니다.
             </p>
-          </div>
+            </div>
         </section>
       </>
     );
