@@ -37,9 +37,21 @@ class ToGoList extends React.Component {
                 this.setState({
                     post:res.data
                 })
-            console.log("기능페이지 포스트 받아오니?",res)
+            console.log("디드마운트 새로 되는거 맞냐?",res)
             })
     }
+
+
+    componentDidUpdate(prevProps) {
+        
+        if (this.props.post !== prevProps.post) {
+            this.setState({
+                post : this.props.post
+            })
+        }
+      }
+
+
 
     showDeleteModal = () =>{
         this.setState({
@@ -69,12 +81,13 @@ class ToGoList extends React.Component {
         console.log("state에 저장 ?", this.state)
         return (
             <>
+                {console.log("투고리스트 프롭스좀 봅시다", this.props.post)}
             <section className="start_list">
                     <div className="mypage_mycontent_box">
                         
                         <h1>To Go List</h1>
-                        {this.state.post.length === 0 ? "가고 싶은 곳을 등록해주세요!" :  
-                this.state.post.map(function (el) {
+                        {this.props.post.length === 0 ? "가고 싶은 곳을 등록해주세요!" :  
+                this.props.post.map(function (el) {
                     return (
                         
                             <div className="mypage_mycontent_frame">
