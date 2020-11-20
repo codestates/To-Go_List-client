@@ -4,6 +4,7 @@ import axios from "axios";
 import SearchModal from "../../components/SearchModal"
 import { NAVER_MAP_CLIENTID } from "../../config/config";
 import { NAVER_MAP_SECRETE_KEY } from "../../config/config";
+
 class Post extends React.Component {
     constructor(props) {
         super(props);
