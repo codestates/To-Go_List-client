@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react";
 import axios from "axios";
-import SearchModal from "./modal/SearchModal"
+import SearchModal from "../../components/SearchModal"
 import { NAVER_MAP_CLIENTID } from "../../config/config";
 import { NAVER_MAP_SECRETE_KEY } from "../../config/config";
 class Post extends React.Component {
@@ -20,7 +20,6 @@ class Post extends React.Component {
         }
         this.getLatLng = this.getLatLng.bind(this);
     }
-
     handleKeyChange = (key) => (e) => {
         this.setState({ [key]: e.target.value }
         );
@@ -31,7 +30,6 @@ class Post extends React.Component {
     closeModal = () => {
         this.setState({ isModalOpen: !this.state.isModalOpen });
     }
-
     handleSubmit = () => {
         const { mapimgpath, content, location } = this.state;
         axios({
@@ -42,11 +40,9 @@ class Post extends React.Component {
                 location: location,
                 mapimgpath: mapimgpath
             }
-
         })
             .then((res) => {
                 console.log('포스트 서브밋 제대로 되는지 봅시다', res)
-
                 axios({
                     method: 'post',
                     url: 'https://togolist-server.ml/hashtag/new',
@@ -70,7 +66,6 @@ class Post extends React.Component {
                 }
             })
     };
-
     async getLatLng(value){
       console.log("pass")
       const naverClientId= this.state.naverClientId;
@@ -111,6 +106,4 @@ class Post extends React.Component {
         );
     }
 }
-
 export default Post
-

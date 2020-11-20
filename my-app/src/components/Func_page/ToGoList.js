@@ -1,34 +1,25 @@
 /* eslint-disable */
-
 import React from "react";
-
 import axios from "axios"
-
-
 import ListDeleteModal from "./modal/ListDeleteModal";
 import ListEditModal from "./modal/ListEditModal";
-
 axios.defaults.withCredentials = true;
-
 class ToGoList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {           
+        this.state = {
+            showEdit: false,
+            showDelete: false,
             content: "",
             location: "",
             mapimgpath: "",
             tag: "",
-            showEdit: false,
-            showDelete: false,
             post: ""
         }
         // this.showEditModal = this.showEditModal.bind(this)
     }
-
     componentDidMount() {
         console.log("기능페이지 didmount중입니다")
-        
-        
         axios({
             method: 'get',
             url: 'https://togolist-server.ml/post',
@@ -58,7 +49,6 @@ class ToGoList extends React.Component {
             showDelete: !this.state.showDelete,
         });
       }
-  
       closeDeleteModal = () =>{
           this.setState({
               showDelete: !this.state.showDelete,
@@ -69,13 +59,11 @@ class ToGoList extends React.Component {
             showEdit: !this.state.showEdit,
         });
       }
-  
       closeEditModal = () =>{
           this.setState({
               showEdit: !this.state.showEdit,
           });
       }
-
     render() {
         console.log("Edit List", this.state.showEdit);
         console.log("state에 저장 ?", this.state)
@@ -84,12 +72,10 @@ class ToGoList extends React.Component {
                 {console.log("투고리스트 프롭스좀 봅시다", this.props.post)}
             <section className="start_list">
                     <div className="mypage_mycontent_box">
-                        
                         <h1>To Go List</h1>
                         {this.props.post.length === 0 ? "가고 싶은 곳을 등록해주세요!" :  
                 this.props.post.map(function (el) {
                     return (
-                        
                             <div className="mypage_mycontent_frame">
                                 <div className="mypage_mycontent_map">{el.mapimgpath && el.mapimgpath}</div>
                                 <div className="mypage_mycontent_content">{el.content}</div>
@@ -116,5 +102,4 @@ class ToGoList extends React.Component {
         );
     }
 }
-
 export default ToGoList;

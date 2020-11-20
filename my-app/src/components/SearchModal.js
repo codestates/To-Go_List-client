@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react";
 import './SearchModal.css'
-import NaverAPIMap from "../components/NaverMap"
+import NaverAPIMap from "./NaverMap"
 import { RenderAfterNavermapsLoaded } from 'react-naver-maps'
 import { NAVER_MAP_CLIENTID } from "../config/config";
 import { NAVER_MAP_SECRETE_KEY } from "../config/config";
