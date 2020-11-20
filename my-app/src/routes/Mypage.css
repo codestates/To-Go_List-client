@@ -235,3 +235,14 @@ dd {
   /* text-shadow: none; */
   border: 1px solid transparent;
 }
+
+.tag_btn {
+  padding: 9px 12px;
+  /* box-sizing: border-box; */
+  border-radius: 5px;
+  background: 0;
+  background-color: #e9ad17;
+  color: #fff !important;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}

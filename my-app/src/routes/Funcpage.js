@@ -11,6 +11,7 @@ class Funcpage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            post: ""
         }
     }
     componentDidMount() {
@@ -21,9 +22,10 @@ class Funcpage extends React.Component {
         },{withCredentials :true}
         ).then((res) => {
                 this.setState({
-                    userPost:res.data
+                    post:res.data
                 })
-            console.log("기능페이지 포스트 받아오니?",res)
+            console.log("기능페이지 포스트 받아오니?", res)
+            console.log("기능페이지 스테이트좀 보려고 합니다", this.state.post)
             })
     }
     createPost = () => {
@@ -33,7 +35,7 @@ class Funcpage extends React.Component {
         },{withCredentials :true}
         ).then((res) => {
                 this.setState({
-                    userPost:res.data
+                    post:res.data
                 })
             console.log("생성 된거니?",res)
             })
@@ -43,7 +45,7 @@ class Funcpage extends React.Component {
             <div className="start_page">
                 <Nav></Nav>
                 <Post createpost={this.createPost }></Post>
-                <ToGoList ></ToGoList>
+                <ToGoList post={this.state.post }></ToGoList>
             </div>
         )
     }
