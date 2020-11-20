@@ -5,9 +5,7 @@ import Nav from "../components/Func_page/Nav";
 import ToGoList from "../components/Func_page/ToGoList";
 import Post from "../components/Func_page/Post";
 import axios from "axios"
-
 import './Funcpage.css'
-
 axios.defaults.withCredentials = true;
 class Funcpage extends React.Component {
     constructor(props) {
@@ -15,11 +13,8 @@ class Funcpage extends React.Component {
         this.state = {
         }
     }
-
     componentDidMount() {
         console.log("기능페이지 didmount중입니다")
-        
-        
         axios({
             method: 'get',
             url: 'https://togolist-server.ml/post',
@@ -31,8 +26,6 @@ class Funcpage extends React.Component {
             console.log("기능페이지 포스트 받아오니?",res)
             })
     }
-
-
     createPost = () => {
         axios({
             method: 'get',
@@ -45,8 +38,6 @@ class Funcpage extends React.Component {
             console.log("생성 된거니?",res)
             })
     }
-
-
     render() {
         return (
             <div className="start_page">
@@ -57,5 +48,4 @@ class Funcpage extends React.Component {
         )
     }
 }
-
 export default Funcpage;
